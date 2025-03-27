@@ -188,7 +188,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_4a0mm")
 }],
 "loop": true,
-"name": &"Dead",
+"name": &"dead",
 "speed": 6.0
 }, {
 "frames": [{
@@ -205,7 +205,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_ow3sd")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"idle",
 "speed": 6.0
 }, {
 "frames": [{
@@ -234,22 +234,23 @@ animations = [{
 "texture": SubResource("AtlasTexture_clll1")
 }],
 "loop": true,
-"name": &"Walk",
+"name": &"walk",
 "speed": 6.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_483qr"]
 radius = 8.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animator")]
 position = Vector2(2, 0)
 script = ExtResource("1_6ad7m")
+animator = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_70prq")
-animation = &"Dead"
-autoplay = "Idle"
-frame_progress = 0.0448937
+animation = &"walk"
+autoplay = "idle"
+frame_progress = 0.49079
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)
