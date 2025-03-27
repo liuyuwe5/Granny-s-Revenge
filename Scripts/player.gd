@@ -19,9 +19,11 @@ func movement(_delta):
 	if input != 0:
 		if input>0:
 			velocity.x = speed
+			$AnimatedSprite2D.scale.x = 1
 			animator.play("walk")
 		elif input < 0:
 			velocity.x = -speed
+			$AnimatedSprite2D.scale.x = -1
 			animator.play("walk")
 	if input == 0:
 		velocity.x = 0
