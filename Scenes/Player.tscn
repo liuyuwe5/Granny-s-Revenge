@@ -250,7 +250,7 @@ animator = NodePath("AnimatedSprite2D")
 sprite_frames = SubResource("SpriteFrames_70prq")
 animation = &"walk"
 autoplay = "idle"
-frame_progress = 0.70266
+frame_progress = 0.246394
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)
