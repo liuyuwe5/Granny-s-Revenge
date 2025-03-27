@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://bcmfox80hwm8a"]
+
+[ext_resource type="Texture2D" uid="uid://cisefa7pad1b0" path="res://Assets/Sprites/Player/Player_metroid.png" id="1_u8s7v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2mgp"]
+atlas = ExtResource("1_u8s7v")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdvv1"]
+atlas = ExtResource("1_u8s7v")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cj7x"]
+atlas = ExtResource("1_u8s7v")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ow3sd"]
+atlas = ExtResource("1_u8s7v")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_70prq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2mgp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdvv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1cj7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ow3sd")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_483qr"]
+radius = 8.0
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_70prq")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.353325
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
+shape = SubResource("CapsuleShape2D_483qr")
