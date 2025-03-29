@@ -1,3 +1,6 @@
+## 🛠️ 2025-03-29 Update
+- Tomato.tscn添加动画，运动速度
+
 ## 🛠️ 2025-03-28 Update
 - Game.tscn添加gravity，ground
 - 添加投掷类武器（`Scenes/Tomato.tscn`，`Scripts/tomato.gd`)

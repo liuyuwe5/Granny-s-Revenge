@@ -1,5 +1,115 @@
-[gd_scene format=3 uid="uid://dcnq8jim8v701"]
+[gd_scene load_steps=16 format=3 uid="uid://dcnq8jim8v701"]
 
-[node name="Tomato" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://dhlj8xgv1iiqm" path="res://Assets/Sprites/Interactables/coin.png" id="1_w3esg"]
+[ext_resource type="Script" path="res://Scripts/tomato.gd" id="1_yyo82"]
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbc3y"]
+atlas = ExtResource("1_w3esg")
+region = Rect2(0, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvply"]
+atlas = ExtResource("1_w3esg")
+region = Rect2(48, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48akf"]
+atlas = ExtResource("1_w3esg")
+region = Rect2(72, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3tuj"]
+atlas = ExtResource("1_w3esg")
+region = Rect2(96, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lvfv"]
+atlas = ExtResource("1_w3esg")
+region = Rect2(120, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0p8m"]
+atlas = ExtResource("1_w3esg")
+region = Rect2(144, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_migwi"]
+atlas = ExtResource("1_w3esg")
+region = Rect2(168, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00mq6"]
+atlas = ExtResource("1_w3esg")
+region = Rect2(192, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2g0j6"]
+atlas = ExtResource("1_w3esg")
+region = Rect2(216, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vm2jh"]
+atlas = ExtResource("1_w3esg")
+region = Rect2(240, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irqey"]
+atlas = ExtResource("1_w3esg")
+region = Rect2(264, 0, 24, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vi0fi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbc3y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvply")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48akf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3tuj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lvfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0p8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_migwi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00mq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2g0j6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vm2jh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irqey")
+}],
+"loop": true,
+"name": &"explosion",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jrm2y"]
+radius = 7.0
+
+[node name="Tomato" type="RigidBody2D"]
+script = ExtResource("1_yyo82")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vi0fi")
+animation = &"explosion"
+frame_progress = 0.69869
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_jrm2y")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_jrm2y")
