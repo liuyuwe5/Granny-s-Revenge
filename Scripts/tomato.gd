@@ -1,24 +1,25 @@
-extends RigidBody2D
+extends Area2D
 
-@export var initial_velocity = Vector2(300, -400)
-
-var exploded = false  # 防止多次触发
+@export var velocity = Vector2(300, -400)
+@export var gravity_tomato = 800  # 每秒加速度，手动模拟下落
+var exploded = false
 
 func _ready():
-	linear_velocity = initial_velocity
-	$Area2D.connect("body_entered", _on_area_body_entered)
-	$AnimatedSprite2D.play("fly")  # 起飞动画
+	await get_tree().create_timer(0.1).timeout  # 0.1 秒延迟
+	connect("body_entered", _on_body_entered)
+	$AnimatedSprite2D.play("fly")
 
-func _on_area_body_entered(body):
+func _process(delta):
 	if exploded:
 		return
-	if body.is_in_group("enemy"):
-		print("番茄砸中敌人！Boom💥")
-		exploded = true
-		show_explosion()
-
-func show_explosion():
-	$AnimatedSprite2D.play("explosion")
 	
+	velocity.y += gravity_tomato * delta
+	position += velocity * delta
+
+func _on_body_entered(body):
+	if exploded or body == owner:
+		return
+	exploded = true
+	$AnimatedSprite2D.play("explosion")
 	await $AnimatedSprite2D.animation_finished
 	queue_free()

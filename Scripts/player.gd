@@ -47,9 +47,8 @@ func throw_tomato():
 	tomato.global_position = global_position
 
 	if facing_right:
-		tomato.initial_velocity = Vector2(300, -400)
+		tomato.velocity = Vector2(300, -400)
 	else:
-		tomato.initial_velocity = Vector2(-300, -400)
+		tomato.velocity = Vector2(-300, -400)
 
 	get_parent().add_child(tomato)
-	
