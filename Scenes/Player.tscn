@@ -240,6 +240,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_483qr"]
 radius = 8.0
+height = 28.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animator")]
 position = Vector2(2, 0)
@@ -250,7 +251,7 @@ animator = NodePath("AnimatedSprite2D")
 sprite_frames = SubResource("SpriteFrames_70prq")
 animation = &"walk"
 autoplay = "idle"
-frame_progress = 0.246394
+frame_progress = 0.337853
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)
