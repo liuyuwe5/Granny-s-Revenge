@@ -27,7 +27,7 @@ script = SubResource("GDScript_t2evu")
 zoom = Vector2(1.84, 1.84)
 
 [node name="Player" parent="." instance=ExtResource("2_vkrvg")]
-position = Vector2(-1, -51)
+position = Vector2(1, 25)
 
 [node name="Ground" type="Node2D" parent="."]
 
