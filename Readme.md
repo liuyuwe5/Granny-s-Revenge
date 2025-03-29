@@ -2,6 +2,12 @@
 - Tomato.tscn添加动画fly、explosion，运动速度
 - Tomato和collison2d撞击后爆炸
 - Enemy.tsc添加动画walk_right、walk_left
+- game.gd 从两侧随机生成enemy
+
+#### TODOs：
+- Tomato接触enemy，enemy死亡
+- Enemy接触player，player死亡
+
 
 ## 🛠️ 2025-03-28 Update
 - Game.tscn添加gravity，ground

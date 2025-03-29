@@ -1,11 +1,13 @@
-extends Node2D
+extends Area2D
 
+@export var speed := 100
+var direction := -1  # -1 = 向左，1 = 向右
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func _process(delta):
+	position.x += direction * speed * delta
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	# 播放对应动画
+	if direction > 0:
+		$AnimatedSprite2D.play("walk_right")
+	else:
+		$AnimatedSprite2D.play("walk_left")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://gl1iys3k3ywe"]
+[gd_scene load_steps=15 format=3 uid="uid://gl1iys3k3ywe"]
 
 [ext_resource type="Texture2D" uid="uid://bwv0tjuh14bsr" path="res://Assets/Sprites/Enemies/enemy_rpg.png" id="1_4m4nd"]
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_i0gkp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_304so"]
 atlas = ExtResource("1_4m4nd")
@@ -90,6 +91,7 @@ radius = 9.0
 height = 18.0
 
 [node name="Area2D" type="Area2D"]
+script = ExtResource("1_i0gkp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qp5sn")
