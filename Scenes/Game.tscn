@@ -26,6 +26,9 @@ script = SubResource("GDScript_t2evu")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.84, 1.84)
 
+[node name="Player" parent="." instance=ExtResource("2_vkrvg")]
+position = Vector2(-1, -51)
+
 [node name="Ground" type="Node2D" parent="."]
 
 [node name="TemperaryGround" type="StaticBody2D" parent="Ground"]
@@ -60,6 +63,3 @@ region_rect = Rect2(32, 80, 48, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/TemperaryGround3"]
 shape = SubResource("RectangleShape2D_l7kk6")
-
-[node name="Player" parent="." instance=ExtResource("2_vkrvg")]
-position = Vector2(-1, -51)
