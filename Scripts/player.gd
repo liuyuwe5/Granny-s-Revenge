@@ -28,6 +28,8 @@ func movement(_delta):
 	if input == 0:
 		velocity.x = 0
 		animator.play("idle")
+		
+	velocity.y += gravity
 	move_and_slide()
 	#velocity = Input.get_vector("left","right","","") * speed
 	#if velocity == Vector2.ZERO:
