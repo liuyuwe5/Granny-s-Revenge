@@ -8,7 +8,6 @@
 - Tomato接触enemy，enemy死亡
 - Enemy接触player，player死亡
 
-
 ## 🛠️ 2025-03-28 Update
 - Game.tscn添加gravity，ground
 - 添加投掷类武器（`Scenes/Tomato.tscn`，`Scripts/tomato.gd`)
