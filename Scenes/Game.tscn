@@ -32,7 +32,8 @@ position = Vector2(-1, -51)
 [node name="Ground" type="Node2D" parent="."]
 
 [node name="TemperaryGround" type="StaticBody2D" parent="Ground"]
-position = Vector2(48, 8)
+position = Vector2(1.19209e-07, 132)
+scale = Vector2(-13.1459, 5.46246)
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground/TemperaryGround"]
 texture = ExtResource("2_sh3ol")
@@ -40,92 +41,4 @@ region_enabled = true
 region_rect = Rect2(32, 80, 48, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/TemperaryGround"]
-shape = SubResource("RectangleShape2D_l7kk6")
-
-[node name="TemperaryGround2" type="StaticBody2D" parent="Ground"]
-position = Vector2(0, 8)
-
-[node name="Sprite2D" type="Sprite2D" parent="Ground/TemperaryGround2"]
-texture = ExtResource("2_sh3ol")
-region_enabled = true
-region_rect = Rect2(32, 80, 48, 16)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/TemperaryGround2"]
-shape = SubResource("RectangleShape2D_l7kk6")
-
-[node name="TemperaryGround3" type="StaticBody2D" parent="Ground"]
-position = Vector2(-48, 8)
-
-[node name="Sprite2D" type="Sprite2D" parent="Ground/TemperaryGround3"]
-texture = ExtResource("2_sh3ol")
-region_enabled = true
-region_rect = Rect2(32, 80, 48, 16)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/TemperaryGround3"]
-shape = SubResource("RectangleShape2D_l7kk6")
-
-[node name="TemperaryGround4" type="StaticBody2D" parent="Ground"]
-position = Vector2(-144, 8)
-
-[node name="Sprite2D" type="Sprite2D" parent="Ground/TemperaryGround4"]
-texture = ExtResource("2_sh3ol")
-region_enabled = true
-region_rect = Rect2(32, 80, 48, 16)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/TemperaryGround4"]
-shape = SubResource("RectangleShape2D_l7kk6")
-
-[node name="TemperaryGround5" type="StaticBody2D" parent="Ground"]
-position = Vector2(-96, 8)
-
-[node name="Sprite2D" type="Sprite2D" parent="Ground/TemperaryGround5"]
-texture = ExtResource("2_sh3ol")
-region_enabled = true
-region_rect = Rect2(32, 80, 48, 16)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/TemperaryGround5"]
-shape = SubResource("RectangleShape2D_l7kk6")
-
-[node name="TemperaryGround6" type="StaticBody2D" parent="Ground"]
-position = Vector2(144, 8)
-
-[node name="Sprite2D" type="Sprite2D" parent="Ground/TemperaryGround6"]
-texture = ExtResource("2_sh3ol")
-region_enabled = true
-region_rect = Rect2(32, 80, 48, 16)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/TemperaryGround6"]
-shape = SubResource("RectangleShape2D_l7kk6")
-
-[node name="TemperaryGround7" type="StaticBody2D" parent="Ground"]
-position = Vector2(96, 8)
-
-[node name="Sprite2D" type="Sprite2D" parent="Ground/TemperaryGround7"]
-texture = ExtResource("2_sh3ol")
-region_enabled = true
-region_rect = Rect2(32, 80, 48, 16)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/TemperaryGround7"]
-shape = SubResource("RectangleShape2D_l7kk6")
-
-[node name="TemperaryGround8" type="StaticBody2D" parent="Ground"]
-position = Vector2(-192, 8)
-
-[node name="Sprite2D" type="Sprite2D" parent="Ground/TemperaryGround8"]
-texture = ExtResource("2_sh3ol")
-region_enabled = true
-region_rect = Rect2(32, 80, 48, 16)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/TemperaryGround8"]
-shape = SubResource("RectangleShape2D_l7kk6")
-
-[node name="TemperaryGround9" type="StaticBody2D" parent="Ground"]
-position = Vector2(192, 8)
-
-[node name="Sprite2D" type="Sprite2D" parent="Ground/TemperaryGround9"]
-texture = ExtResource("2_sh3ol")
-region_enabled = true
-region_rect = Rect2(32, 80, 48, 16)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/TemperaryGround9"]
 shape = SubResource("RectangleShape2D_l7kk6")

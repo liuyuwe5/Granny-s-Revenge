@@ -1,5 +1,6 @@
 ## 🛠️ 2025-03-29 Update
 - Tomato.tscn添加动画，运动速度
+- Tomato和collison2d撞击后爆炸
 
 ## 🛠️ 2025-03-28 Update
 - Game.tscn添加gravity，ground
