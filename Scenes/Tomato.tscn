@@ -3,10 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://dhlj8xgv1iiqm" path="res://Assets/Sprites/Interactables/coin.png" id="1_w3esg"]
 [ext_resource type="Script" path="res://Scripts/tomato.gd" id="1_yyo82"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dbc3y"]
-atlas = ExtResource("1_w3esg")
-region = Rect2(0, 0, 24, 26)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_hvply"]
 atlas = ExtResource("1_w3esg")
 region = Rect2(48, 0, 24, 26)
@@ -47,16 +43,12 @@ region = Rect2(240, 0, 24, 26)
 atlas = ExtResource("1_w3esg")
 region = Rect2(264, 0, 24, 26)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbc3y"]
+atlas = ExtResource("1_w3esg")
+region = Rect2(0, 0, 24, 26)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_vi0fi"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dbc3y")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hvply")
@@ -91,6 +83,14 @@ animations = [{
 "loop": true,
 "name": &"explosion",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbc3y")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jrm2y"]
@@ -101,8 +101,8 @@ script = ExtResource("1_yyo82")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vi0fi")
-animation = &"explosion"
-frame_progress = 0.69869
+animation = &"fly"
+frame_progress = 0.541805
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
