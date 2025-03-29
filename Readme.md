@@ -1,5 +1,6 @@
 ## 🛠️ 2025-03-28 Update
 - Game.tscn添加gravity，ground
+- 添加投掷类武器（`Scenes/Tomato.tscn`)  
 
 ## 🛠️ 2025-03-26 Update
 - 添加主战斗场景 (`Scenes/Game.tscn`)  
