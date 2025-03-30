@@ -189,7 +189,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_4a0mm")
 }],
 "loop": true,
-"name": &"dead",
+"name": &"death",
 "speed": 6.0
 }, {
 "frames": [{
@@ -248,12 +248,12 @@ position = Vector2(2, 0)
 script = ExtResource("1_6ad7m")
 animator = NodePath("AnimatedSprite2D")
 tomato_scene = ExtResource("2_ggsxf")
+throw_interval = 0.1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_70prq")
-animation = &"walk"
+animation = &"death"
 autoplay = "idle"
-frame_progress = 0.337853
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)
