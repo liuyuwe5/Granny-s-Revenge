@@ -1,0 +1,96 @@
+[gd_scene load_steps=14 format=3 uid="uid://dcnq8jim8v701"]
+
+[ext_resource type="Texture2D" uid="uid://dhlj8xgv1iiqm" path="res://Assets/Sprites/Interactables/coin.png" id="1_w3esg"]
+[ext_resource type="Script" path="res://Scripts/tomato.gd" id="1_yyo82"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wy7lf"]
+atlas = ExtResource("1_w3esg")
+region = Rect2(96, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15656"]
+atlas = ExtResource("1_w3esg")
+region = Rect2(120, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3wr7"]
+atlas = ExtResource("1_w3esg")
+region = Rect2(144, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4orls"]
+atlas = ExtResource("1_w3esg")
+region = Rect2(168, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e74wv"]
+atlas = ExtResource("1_w3esg")
+region = Rect2(192, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a307n"]
+atlas = ExtResource("1_w3esg")
+region = Rect2(216, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lul8x"]
+atlas = ExtResource("1_w3esg")
+region = Rect2(240, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsj3p"]
+atlas = ExtResource("1_w3esg")
+region = Rect2(264, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qanap"]
+atlas = ExtResource("1_w3esg")
+region = Rect2(0, 0, 24, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_be7s1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wy7lf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15656")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3wr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4orls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e74wv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a307n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lul8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsj3p")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qanap")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ura2"]
+radius = 7.0
+
+[node name="Area2D" type="Area2D" groups=["Tomato"]]
+script = ExtResource("1_yyo82")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_be7s1")
+animation = &"explosion"
+frame = 7
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_6ura2")

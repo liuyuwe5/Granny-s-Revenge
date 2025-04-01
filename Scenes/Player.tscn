@@ -1,7 +1,9 @@
-[gd_scene load_steps=36 format=3 uid="uid://bbpj3o0ix703m"]
+
+[gd_scene load_steps=37 format=3 uid="uid://bcmfox80hwm8a"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_6ad7m"]
 [ext_resource type="Texture2D" uid="uid://cisefa7pad1b0" path="res://Assets/Sprites/Player/Player_metroid.png" id="1_u8s7v"]
+[ext_resource type="PackedScene" uid="uid://dcnq8jim8v701" path="res://Scenes/Tomato.tscn" id="2_ggsxf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uf2p3"]
 atlas = ExtResource("1_u8s7v")
@@ -188,7 +190,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_4a0mm")
 }],
 "loop": true,
-"name": &"dead",
+"name": &"death",
 "speed": 6.0
 }, {
 "frames": [{
@@ -240,17 +242,19 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_483qr"]
 radius = 8.0
+height = 32.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animator")]
 position = Vector2(2, 0)
 script = ExtResource("1_6ad7m")
 animator = NodePath("AnimatedSprite2D")
+tomato_scene = ExtResource("2_ggsxf")
+throw_interval = 0.1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_70prq")
-animation = &"walk"
+animation = &"death"
 autoplay = "idle"
-frame_progress = 0.246394
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)
