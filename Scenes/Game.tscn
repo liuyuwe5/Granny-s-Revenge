@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://bas2r64ou7jv8" path="res://Assets/Sprites/Environment/2d_metroidvania_serie_mockup_1_tileset.png" id="2_sh3ol"]
 [ext_resource type="PackedScene" uid="uid://bcmfox80hwm8a" path="res://Scenes/Player.tscn" id="2_vkrvg"]
 
-
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_arhbn"]
 distance = 6.59044
 

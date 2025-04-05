@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://en5u66hao0pi"]
+[gd_scene load_steps=7 format=3 uid="uid://cba5jfmkawkg3"]
 
 [ext_resource type="Texture2D" uid="uid://bcv81jcv2nejv" path="res://Assets/Sprites/Environment/background_sprite_1.png" id="1_pebdd"]
 [ext_resource type="Texture2D" uid="uid://qrvs5py7gxe8" path="res://Assets/temple_images/ChatGPT_granny.png" id="2_ofjfe"]

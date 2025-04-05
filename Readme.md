@@ -1,30 +1,31 @@
-## 🛠️ 2025-03-30 Update
-- Tomato接触enemy，enemy死亡
-
-#### TODOs：
+## 🛠️ 2025-04-04 Update (战斗场景)
 - Enemy接触player，player死亡
 
-## 🛠️ 2025-03-29 Update
+
+## 🛠️ 2025-03-30 Update (战斗场景)
+- Tomato接触enemy，enemy死亡
+
+
+## 🛠️ 2025-03-29 Update (战斗场景)
 - Tomato.tscn添加动画fly、explosion，运动速度
 - Tomato和collison2d撞击后爆炸
 - Enemy.tsc添加动画walk_right、walk_left
 - game.gd 从两侧随机生成enemy
 
-
-## 🛠️ 2025-03-28 Update
+## 🛠️ 2025-03-28 Update (战斗场景)
 - Game.tscn添加gravity，ground
 - 添加投掷类武器（`Scenes/Tomato.tscn`，`Scripts/tomato.gd`)
 - 添加敌人（`Scenes/Enemy.tscn`，`Scripts/Enemy.gd`)
 
-## 🛠️ 2025-03-26 Update
+## 🛠️ 2025-03-26 Update (战斗场景)
 - 添加主战斗场景 (`Scenes/Game.tscn`)  
 - 添加玩家角色场景 (`Scenes/player.tscn`,`Scripts/player.gd`)
 - 使用免费 sprite 作为占位图进行原型开发
 - 映射： A-left， D-right 
 - Game.tscn添加camera
-
-## 2025-03-29 Update
--添加游戏开始页面 ('Scenes/main_menu.tscn')
 - player.tscn添加动画：idle，walk，dead
 
+---
 
+## 🛠️ 2025-03-29 Update (开始界面)
+- 添加游戏开始页面 ('Scenes/main_menu.tscn')

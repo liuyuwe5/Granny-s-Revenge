@@ -8,6 +8,7 @@ var input
 var facing_right = true
 var tomato_timer = 0.0
 @export var throw_interval = 0.5  # 每 1.5 秒扔一次
+var is_game_over : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,11 +16,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	movement(delta)
-	tomato_timer += delta
-	if tomato_timer > throw_interval:
-		tomato_timer = 0
-		throw_tomato()
+	if not is_game_over:
+		movement(delta)
+		tomato_timer += delta
+		if tomato_timer > throw_interval:
+			tomato_timer = 0
+			throw_tomato()
 	
 func movement(_delta):
 	input = Input.get_action_strength("right") - Input.get_action_strength("left") 
@@ -52,3 +54,18 @@ func throw_tomato():
 		tomato.velocity = Vector2(-300, -400)
 
 	get_parent().add_child(tomato)
+
+
+func game_over():
+	if not is_game_over:
+		is_game_over = true
+		animator.play("death")
+		
+		#get_tree().current_scene.show_game_over()
+		#$GameOverSound.play()
+		
+		# 重启游戏 - 会导致白光
+		#await get_tree().create_timer(3).timeout
+		#get_tree().reload_current_scene()
+		
+		#$RestartTimer.start()
