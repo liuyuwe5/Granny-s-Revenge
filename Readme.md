@@ -1,11 +1,16 @@
 ## 🛠️ 2025-04-04 Update (战斗场景)
+- 添加Dialogic插件加载剧情
+
+#### TODOs:
+- 随机掉落的buff
+
+## 🛠️ 2025-04-04 Update (战斗场景)
 - Enemy接触player，player死亡
 - 记分系统，敌人死亡score+=1
 - 鼠标改变投掷方向
 
 ## 🛠️ 2025-03-30 Update (战斗场景)
 - Tomato接触enemy，enemy死亡
-
 
 ## 🛠️ 2025-03-29 Update (战斗场景)
 - Tomato.tscn添加动画fly、explosion，运动速度
