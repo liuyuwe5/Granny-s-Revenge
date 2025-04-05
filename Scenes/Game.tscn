@@ -22,7 +22,6 @@ zoom = Vector2(1.84, 1.84)
 
 [node name="Player" parent="." instance=ExtResource("2_vkrvg")]
 position = Vector2(1, 25)
-throw_interval = 0.5
 
 [node name="Ground" type="Node2D" parent="."]
 

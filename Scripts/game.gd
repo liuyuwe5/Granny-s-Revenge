@@ -10,7 +10,7 @@ extends Node2D
 func _ready():
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	spawn_timer.start()
-
+	
 func _on_spawn_timer_timeout():
 	var enemy = enemy_scene.instantiate()
 	add_child(enemy)
