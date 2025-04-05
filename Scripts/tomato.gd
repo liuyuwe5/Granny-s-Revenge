@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var velocity = Vector2(300, -400)
-@export var gravity_tomato = 800  # 每秒加速度，手动模拟下落
+@export var gravity_tomato = 50  # 每秒加速度，手动模拟下落
 var exploded = false
 
 func _ready():

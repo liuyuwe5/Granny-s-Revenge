@@ -9,6 +9,8 @@ var facing_right = true
 var tomato_timer = 0.0
 @export var throw_interval = 0.5  # 每 1.5 秒扔一次
 var is_game_over : bool = false
+var throw_direction := Vector2.RIGHT
+var tomato_speed = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,6 +20,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not is_game_over:
 		movement(delta)
+
+		if Input.is_action_just_pressed("shoot"):
+			var mouse_pos = get_global_mouse_position()
+			throw_direction = (mouse_pos - global_position).normalized()
+			$AnimatedSprite2D.scale.x = sign(throw_direction.x)
+		
 		tomato_timer += delta
 		if tomato_timer > throw_interval:
 			tomato_timer = 0
@@ -48,12 +56,21 @@ func throw_tomato():
 	var tomato = tomato_scene.instantiate()
 	tomato.global_position = global_position
 
-	if facing_right:
-		tomato.velocity = Vector2(300, -400)
-	else:
-		tomato.velocity = Vector2(-300, -400)
+	#if facing_right:
+		#tomato.velocity = Vector2(300, -400)
+	#else:
+		#tomato.velocity = Vector2(-300, -400)
+		
+	
+		
 
 	get_parent().add_child(tomato)
+	#var mouse_pos = get_global_mouse_position()
+	#var direction = (mouse_pos - global_position).normalized()
+	
+	# 设置速度大小
+
+	tomato.velocity = throw_direction * tomato_speed
 
 
 func game_over():
@@ -69,3 +86,4 @@ func game_over():
 		#get_tree().reload_current_scene()
 		
 		#$RestartTimer.start()
+		
