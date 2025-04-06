@@ -6,10 +6,15 @@ extends Node2D
 @export var spawn_distance := 330 # 离屏外一点生成
 @export var spawn_y := 80 # 生成高度，可视情况调整
 @export var score : int = 0
+@export var score_label : Label
 
 func _ready():
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	spawn_timer.start()
+	
+	
+func _process(delta: float) -> void:
+	score_label.text = "Score: "+ str(score)
 	
 func _on_spawn_timer_timeout():
 	var enemy = enemy_scene.instantiate()
