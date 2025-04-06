@@ -16,8 +16,6 @@ func _process(delta):
 	# 控制左右翻转（面朝方向）
 	$AnimatedSprite2D.scale.x = direction
 
-
-
 #func _on_area_entered(area: Area2D) -> void:
 	#print("敌人检测到碰撞：", area.name, " 所属组 Tomato？", area.is_in_group("Tomato"))
 #
@@ -39,13 +37,12 @@ func _process(delta):
 		#await $AnimatedSprite2D.animation_finished
 		#queue_free()
 func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Tomato"):
+	if area.is_in_group("Tomato") and not is_dead:
 		$AnimatedSprite2D.play("death")
 		is_dead = true
 		area.queue_free()
 		get_tree().current_scene.score += 1
 		print(get_tree().current_scene.score)
-		
 		
 		await get_tree().create_timer(0.6).timeout
 		queue_free()
