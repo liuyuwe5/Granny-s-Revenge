@@ -56,14 +56,6 @@ func throw_tomato():
 	var tomato = tomato_scene.instantiate()
 	tomato.global_position = global_position
 
-	#if facing_right:
-		#tomato.velocity = Vector2(300, -400)
-	#else:
-		#tomato.velocity = Vector2(-300, -400)
-		
-	
-		
-
 	get_parent().add_child(tomato)
 	#var mouse_pos = get_global_mouse_position()
 	#var direction = (mouse_pos - global_position).normalized()
@@ -77,13 +69,7 @@ func game_over():
 	if not is_game_over:
 		is_game_over = true
 		animator.play("death")
-		
-		#get_tree().current_scene.show_game_over()
-		#$GameOverSound.play()
-		
-		# 重启游戏 - 会导致白光
-		#await get_tree().create_timer(3).timeout
-		#get_tree().reload_current_scene()
-		
-		#$RestartTimer.start()
+		await get_tree().create_timer(3).timeout
+		get_tree().change_scene_to_file("res://Scenes/GameOver.tscn")
+
 		

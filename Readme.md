@@ -1,10 +1,13 @@
-## 🛠️ 2025-04-05 Update (战斗场景)
-- 添加Dialogic插件加载剧情
-- 添加`GameOver.tscn`
+## 🛠️ 2025-04-06 Update (战斗场景)
+- 链接`GameOver.tscn`和`Game.tscn`
+- `GameOver.tscn`添加随机的title
 
 #### TODOs:
 - 随机掉落的buff
-- 链接`GameOver.tscn`和`Game.tscn`
+
+## 🛠️ 2025-04-05 Update (战斗场景)
+- 添加Dialogic插件加载剧情
+- 添加`GameOver.tscn`
 
 ## 🛠️ 2025-04-04 Update (战斗场景)
 - Enemy接触player，player死亡
