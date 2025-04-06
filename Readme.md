@@ -1,6 +1,6 @@
 ## 🛠️ 2025-04-04 Update (战斗场景)
 - 添加Dialogic插件加载剧情
-- 添加面`GameOver.tscn`
+- 添加`GameOver.tscn`
 
 #### TODOs:
 - 随机掉落的buff
