@@ -7,6 +7,7 @@ extends Node2D
 @export var spawn_y := 80 # 生成高度，可视情况调整
 @export var score : int = 0
 @export var score_label : Label
+@export var player : CharacterBody2D
 
 func _ready():
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
@@ -15,6 +16,8 @@ func _ready():
 	
 func _process(delta: float) -> void:
 	score_label.text = "Score: "+ str(score)
+	if score >=5:
+		player.win()
 	
 func _on_spawn_timer_timeout():
 	var enemy = enemy_scene.instantiate()
@@ -31,3 +34,4 @@ func _on_spawn_timer_timeout():
 		enemy.direction = -1
 #func show_game_over():
 	#game_over_label.visible = true
+	
