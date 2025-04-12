@@ -65,8 +65,9 @@ func _ready() -> void:
 	#tween.tween_property(title_label, "position:x", target_x, 0.3)
 	
 func on_restart_pressed() -> void:
-	pass
+	get_tree().change_scene_to_file("res://Scenes/Intro.tscn")
+	
 	
 func  on_quit_pressed() -> void:
-	pass
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 	

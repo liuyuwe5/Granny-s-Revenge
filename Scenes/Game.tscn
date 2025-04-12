@@ -12,11 +12,12 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_arhbn"]
 distance = 6.59044
 
-[node name="Node2D" type="Node2D" node_paths=PackedStringArray("spawn_timer", "score_label")]
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("spawn_timer", "score_label", "player")]
 script = ExtResource("1_1qtte")
 enemy_scene = ExtResource("2_mhqi4")
 spawn_timer = NodePath("Timer")
 score_label = NodePath("CanvasLayer/ScoreLabel")
+player = NodePath("Player")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.84, 1.84)

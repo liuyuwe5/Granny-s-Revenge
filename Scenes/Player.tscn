@@ -253,7 +253,7 @@ tomato_scene = ExtResource("2_ggsxf")
 sprite_frames = SubResource("SpriteFrames_70prq")
 animation = &"walk"
 autoplay = "idle"
-frame_progress = 0.142092
+frame_progress = 0.533301
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)

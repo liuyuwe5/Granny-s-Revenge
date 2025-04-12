@@ -1,17 +1,19 @@
 [gd_scene load_steps=2 format=3 uid="uid://dkdphr1jqlj1y"]
 
-[ext_resource type="Script" path="res://Scripts/game_over.gd" id="1_51dym"]
+[ext_resource type="Script" path="res://Scripts/gameover.gd" id="1_51dym"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_51dym")
 
-[node name="GamOverLabel" type="Label" parent="."]
+[node name="GameOverLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 314.0
 offset_top = 188.0
@@ -21,10 +23,11 @@ theme_override_font_sizes/font_size = 100
 text = "Game Over"
 
 [node name="TitleLabel" type="Label" parent="."]
-offset_left = 1173.0
+layout_mode = 0
+offset_left = 587.0
 offset_top = 319.0
-offset_right = 1257.0
-offset_bottom = 374.0
+offset_right = 627.0
+offset_bottom = 342.0
 theme_override_font_sizes/font_size = 40
 text = "Title"
 
@@ -38,6 +41,7 @@ theme_override_font_sizes/font_size = 40
 text = "Restart"
 
 [node name="Quit" type="Button" parent="."]
+layout_mode = 0
 offset_left = 781.0
 offset_top = 422.0
 offset_right = 873.0

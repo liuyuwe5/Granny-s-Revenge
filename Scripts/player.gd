@@ -64,12 +64,17 @@ func throw_tomato():
 
 	tomato.velocity = throw_direction * tomato_speed
 
-
 func game_over():
 	if not is_game_over:
 		is_game_over = true
 		animator.play("death")
 		await get_tree().create_timer(3).timeout
 		get_tree().change_scene_to_file("res://Scenes/GameOver.tscn")
+		
+		
+func win():
+	if not is_game_over:
+		await get_tree().create_timer(2).timeout
+		get_tree().change_scene_to_file("res://Scenes/Win.tscn")
 
 		
