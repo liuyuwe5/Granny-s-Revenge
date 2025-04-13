@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cba5jfmkawkg3"]
 
-[ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_3gi5b"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_3gi5b"]
 [ext_resource type="Texture2D" uid="uid://bcv81jcv2nejv" path="res://Assets/Sprites/Environment/background_sprite_1.png" id="1_pebdd"]
 [ext_resource type="Texture2D" uid="uid://qrvs5py7gxe8" path="res://Assets/temple_images/ChatGPT_granny.png" id="2_ofjfe"]
 [ext_resource type="FontFile" uid="uid://d3jfoylenjxrd" path="res://Assets/font/04B_30__.TTF" id="3_ivgok"]
@@ -99,3 +99,5 @@ theme_override_font_sizes/font_size = 54
 text = "Granny's Revenge"
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_exit_pressed"]

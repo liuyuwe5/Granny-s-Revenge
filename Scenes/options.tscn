@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnwi5mykr06ys"]
+
+[ext_resource type="Texture2D" uid="uid://bcv81jcv2nejv" path="res://Assets/Sprites/Environment/background_sprite_1.png" id="1_1hk8q"]
+[ext_resource type="Script" path="res://Scripts/options.gd" id="1_op46e"]
+[ext_resource type="Texture2D" uid="uid://cdf6a4urn1nbw" path="res://Assets/Sprites/UI/icons/cross.png" id="2_nk63d"]
+[ext_resource type="FontFile" uid="uid://cc4xli25271fd" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Bold.ttf" id="4_phgv8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5wg4j"]
+texture = ExtResource("1_1hk8q")
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_op46e")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5wg4j")
+
+[node name="back_to_start_menu" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.900174
+anchor_top = 0.0555556
+anchor_right = 0.956597
+anchor_bottom = 0.151235
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_icons/icon = ExtResource("2_nk63d")
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -154.0
+offset_top = -34.0
+offset_right = 20.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_phgv8")
+theme_override_font_sizes/font_size = 30
+text = "Volume
+"
+
+[node name="volume" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="Panel/back_to_start_menu" to="." method="_on_back_to_start_menu_pressed"]
+[connection signal="value_changed" from="VBoxContainer/volume" to="." method="_on_volume_value_changed"]
