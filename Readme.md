@@ -44,6 +44,13 @@
 - player.tscn添加动画：idle，walk，dead
 
 ---
+## 🛠️ 2025-04-16 Update (Options界面)
+- 添加双语按钮
+
+## 🛠️ 2025-04-16 Update (Win)
+- 废墟界面结构跟战斗界面类似，有ground，背景，玩家可以左右移动。
+- 进入界面之后2秒左右会切入dialogic， 跳出旁白内容“那些金色高楼...存在过。“，剧情进行时玩家不可移动。
+- 旁白结束后，玩家可以左右移动 (maybe change to end of game)
 
 ## 🛠️ 2025-04-13 Update (开始界面)
 - 开始页面的互动：start game, exit

@@ -76,7 +76,9 @@ offset_right = 61.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 40
 text = "Score: 0"
+metadata/_edit_use_anchors_ = true
 
 [node name="GameoverLabel" type="Label" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 23.0
+metadata/_edit_use_anchors_ = true
