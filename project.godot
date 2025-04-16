@@ -23,6 +23,7 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 directories/dch_directory={}
 directories/dtl_directory={
+"final_scene_intro": "res://Story/final_scene_intro.dtl",
 "timeline": "res://Story/timeline.dtl"
 }
 extensions_folder="res://addons/dialogic_additions"
@@ -58,6 +59,10 @@ audio/channel_defaults={
 "volume": 0.0
 }
 }
+glossary/default_case_sensitive=true
+layout/style_list=[]
+layout/default_style="Default"
+variables={}
 
 [display]
 

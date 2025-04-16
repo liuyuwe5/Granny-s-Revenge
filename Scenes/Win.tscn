@@ -1,18 +1,65 @@
-[gd_scene format=3 uid="uid://qjxtturepqb2"]
+[gd_scene load_steps=9 format=3 uid="uid://b5x1dn0lussto"]
 
-[node name="Win" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[ext_resource type="PackedScene" uid="uid://bcmfox80hwm8a" path="res://Scenes/Player.tscn" id="1_oumcd"]
+[ext_resource type="Script" path="res://Scripts/win.gd" id="2_u12yg"]
+[ext_resource type="Texture2D" uid="uid://bas2r64ou7jv8" path="res://Assets/Sprites/Environment/2d_metroidvania_serie_mockup_1_tileset.png" id="3_6qv8u"]
+[ext_resource type="Texture2D" uid="uid://cu0uonrxrk8l2" path="res://Assets/Sprites/Environment/parallax-00.png" id="4_wtjop"]
+[ext_resource type="Texture2D" uid="uid://c135ycpirm1vk" path="res://Assets/Sprites/Environment/parallax-01.png" id="5_awmf6"]
+[ext_resource type="Texture2D" uid="uid://b0tdctxgeaj" path="res://Assets/Sprites/Environment/parallax-03.png" id="6_2x4r6"]
+[ext_resource type="Texture2D" uid="uid://c3md3515cy51c" path="res://Assets/Sprites/Environment/parallax-04.png" id="7_x747m"]
 
-[node name="WinLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 490.0
-offset_top = 201.0
-offset_right = 676.0
-offset_bottom = 338.0
-theme_override_font_sizes/font_size = 100
-text = "Win"
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_onrhe"]
+distance = 6.59044
+
+[node name="Win" type="Node2D"]
+script = ExtResource("2_u12yg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.84, 1.84)
+
+[node name="Player" parent="." instance=ExtResource("1_oumcd")]
+position = Vector2(1, 25)
+
+[node name="Ground" type="Node2D" parent="."]
+
+[node name="TemperaryGround" type="StaticBody2D" parent="Ground"]
+position = Vector2(1.19209e-07, 132)
+scale = Vector2(-13.1459, 5.46246)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground/TemperaryGround"]
+texture = ExtResource("3_6qv8u")
+region_enabled = true
+region_rect = Rect2(32, 80, 48, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/TemperaryGround"]
+position = Vector2(9.06817e-09, -1.28147)
+shape = SubResource("WorldBoundaryShape2D_onrhe")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("4_wtjop")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("5_awmf6")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource("6_2x4r6")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.9, 0.9)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+texture = ExtResource("7_x747m")
+
+[node name="DialogTimer" type="Timer" parent="."]
+one_shot = true
