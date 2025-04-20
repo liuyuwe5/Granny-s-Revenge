@@ -1,16 +1,21 @@
 extends Area2D
 
-@export var speed := 100
+@export var speed := 50
 var direction := -1  # -1 = 向左，1 = 向右
 var is_dead := false
 
 func _process(delta):
+	#print("Frame size: ", $AnimatedSprite2D.get_sprite_frames().get_frame_texture("walk", 0).get_size())
+	
+	
 	if is_dead:
 		return
+	#print("Frame size: ", $AnimatedSprite2D.get_sprite_frames().get_frame_texture("walk", 0).get_size())
 	
 	position.x += direction * speed * delta
 	
 	# 播放统一 walk 动画
+	$AnimatedSprite2D.scale = Vector2(2.0, 1.0)  
 	$AnimatedSprite2D.play("walk")
 	
 	# 控制左右翻转（面朝方向）
