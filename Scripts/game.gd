@@ -8,6 +8,11 @@ extends Node2D
 @export var score : int = 0
 @export var score_label : Label
 @export var player : CharacterBody2D
+@export var arrow_hint: AnimatedSprite2D
+@export var right_boundary: CollisionShape2D
+var spawn_stopped := false
+
+
 
 func _ready():
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
@@ -16,13 +21,18 @@ func _ready():
 	
 func _process(delta: float) -> void:
 	score_label.text = "Score: "+ str(score)
-	if score >=5:
-		player.win()
+	if score >= 5 and not spawn_stopped:
+		spawn_timer.stop()
+		spawn_stopped = true
+		arrow_hint.visible = true
+		arrow_hint.modulate.a = 0.5
+		right_boundary.disabled = true
+		
 	
 func _on_spawn_timer_timeout():
 	var enemy = enemy_scene.instantiate()
 	add_child(enemy)
-
+	
 	var from_left = randf() < 0.5
 
 	if from_left:
