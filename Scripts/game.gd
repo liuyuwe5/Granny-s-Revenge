@@ -11,15 +11,21 @@ extends Node2D
 @export var arrow_hint: AnimatedSprite2D
 @export var right_boundary: CollisionShape2D
 var spawn_stopped := false
+var transition_trigger_x := 335
+var transitioned := false
 
 
 
 func _ready():
+	
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	spawn_timer.start()
 	
 	
 func _process(delta: float) -> void:
+	if not transitioned and player.position.x >= transition_trigger_x and score >= 5:
+		transitioned = true
+		get_tree().change_scene_to_file("res://Scenes/Win.tscn")
 	score_label.text = "Score: "+ str(score)
 	if score >= 5 and not spawn_stopped:
 		spawn_timer.stop()
