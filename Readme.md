@@ -1,14 +1,21 @@
+## 🛠️ 2025-04-20 Update (Win)
+- 添加BlackOverlay 渐变切入场景
+- 添加三步 1.渐变 2.动画（走到中央） 3.dialogic剧情
+
+
 ## 🛠️ 2025-04-20 Update (战斗场景)
 - 添加Asset：background，cybertruck
 - 添加right&left boundary限制玩家左右行动
 - 当score >= 5 -> 显示小箭头，玩家可以向右行走进入下一个场景
 
-## 🛠️ 2025-04-013 Update (战斗场景)
+
+
+## 🛠️ 2025-04-13 Update (Win)
 - 添加`GameOver.tscn` restart，quit按钮
 - 添加`Win.tscn`
 - 当score >= 5 -> 跳转`Win.tscn`
 
-## 🛠️ 2025-04-06 Update (战斗场景)
+## 🛠️ 2025-04-06 Update (GameOver)
 - 链接`GameOver.tscn`和`Game.tscn`
 - `GameOver.tscn`添加随机的title
 
