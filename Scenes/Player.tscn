@@ -1,8 +1,9 @@
-[gd_scene load_steps=37 format=3 uid="uid://bcmfox80hwm8a"]
+[gd_scene load_steps=46 format=3 uid="uid://bcmfox80hwm8a"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_6ad7m"]
 [ext_resource type="Texture2D" uid="uid://cisefa7pad1b0" path="res://Assets/Sprites/Player/Player_metroid.png" id="1_u8s7v"]
 [ext_resource type="PackedScene" uid="uid://dcnq8jim8v701" path="res://Scenes/Tomato.tscn" id="2_ggsxf"]
+[ext_resource type="Texture2D" uid="uid://dvi7y68snoatm" path="res://Assets/Sprites/Player/walk .webp" id="4_4ilyq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uf2p3"]
 atlas = ExtResource("1_u8s7v")
@@ -128,6 +129,38 @@ region = Rect2(384, 64, 64, 64)
 atlas = ExtResource("1_u8s7v")
 region = Rect2(448, 64, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7xwi"]
+atlas = ExtResource("4_4ilyq")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hev0u"]
+atlas = ExtResource("4_4ilyq")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wv8ua"]
+atlas = ExtResource("4_4ilyq")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e68g6"]
+atlas = ExtResource("4_4ilyq")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80ojy"]
+atlas = ExtResource("4_4ilyq")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0okec"]
+atlas = ExtResource("4_4ilyq")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jx6xx"]
+atlas = ExtResource("4_4ilyq")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7g7e5"]
+atlas = ExtResource("4_4ilyq")
+region = Rect2(168, 0, 24, 24)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_70prq"]
 animations = [{
 "frames": [{
@@ -237,6 +270,35 @@ animations = [{
 "loop": true,
 "name": &"walk",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7xwi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hev0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wv8ua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e68g6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80ojy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0okec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jx6xx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7g7e5")
+}],
+"loop": true,
+"name": &"walk_2",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_483qr"]
@@ -253,7 +315,7 @@ tomato_scene = ExtResource("2_ggsxf")
 sprite_frames = SubResource("SpriteFrames_70prq")
 animation = &"walk"
 autoplay = "idle"
-frame_progress = 0.533301
+frame_progress = 0.219428
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)
