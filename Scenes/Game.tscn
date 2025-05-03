@@ -3,15 +3,19 @@
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_1qtte"]
 [ext_resource type="PackedScene" uid="uid://gl1iys3k3ywe" path="res://Scenes/Enemy.tscn" id="2_mhqi4"]
 [ext_resource type="PackedScene" uid="uid://bcmfox80hwm8a" path="res://Scenes/Player.tscn" id="2_vkrvg"]
-[ext_resource type="Texture2D" uid="uid://k8is7hbwhweb" path="res://Assets/Sprites/Environment/background_front.png" id="4_keigp"]
 [ext_resource type="Texture2D" uid="uid://dxulelg32bfgv" path="res://Assets/Sprites/Environment/ground.png" id="5_lpdpb"]
 [ext_resource type="Texture2D" uid="uid://cu0uonrxrk8l2" path="res://Assets/Sprites/Environment/parallax-00.png" id="5_x5uv4"]
 [ext_resource type="Texture2D" uid="uid://c135ycpirm1vk" path="res://Assets/Sprites/Environment/parallax-01.png" id="6_lx6co"]
 [ext_resource type="Texture2D" uid="uid://b0tdctxgeaj" path="res://Assets/Sprites/Environment/parallax-03.png" id="7_k1dma"]
-[ext_resource type="Texture2D" uid="uid://bqddgpwp8vbh1" path="res://Assets/Sprites/Environment/background.png" id="8_74fx7"]
 [ext_resource type="Texture2D" uid="uid://c3md3515cy51c" path="res://Assets/Sprites/Environment/parallax-04.png" id="8_kudmt"]
 [ext_resource type="Shader" path="res://Shaders/Arrow.gdshader" id="11_klrqf"]
 [ext_resource type="Texture2D" uid="uid://cilb78t340xy3" path="res://Assets/Sprites/UI/arrow_isometric.png" id="11_ov2kw"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b0vyd"]
+load_path = "res://.godot/imported/background.png-294a3912cd9c8159c3f6ce8522bf708f.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bx6lf"]
+load_path = "res://.godot/imported/background_front.png-a8b5b442c601156dcf468d291cd2da23.ctex"
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_arhbn"]
 distance = 6.59044
@@ -58,12 +62,12 @@ metadata/_edit_lock_ = true
 
 [node name="BackgroundBack" type="Sprite2D" parent="BackGround"]
 scale = Vector2(2.014, 2)
-texture = ExtResource("8_74fx7")
+texture = SubResource("CompressedTexture2D_b0vyd")
 
 [node name="BackgroundFront" type="Sprite2D" parent="BackGround"]
 position = Vector2(0, -33)
 scale = Vector2(1.90659, 1.9)
-texture = ExtResource("4_keigp")
+texture = SubResource("CompressedTexture2D_bx6lf")
 
 [node name="Ground" type="Sprite2D" parent="BackGround"]
 position = Vector2(0, -220)
