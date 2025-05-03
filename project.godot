@@ -24,7 +24,11 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 directories/dch_directory={}
 directories/dtl_directory={
 "final_scene_intro": "res://Story/final_scene_intro.dtl",
-"timeline": "res://Story/timeline.dtl"
+"intro": "res://Story/intro.dtl",
+"leve_3": "res://Story/level_3.dtl",
+"level_1": "res://Story/level_1.dtl",
+"level_2": "res://Story/level_2.dtl",
+"level_4": "res://Story/level_4.dtl"
 }
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
