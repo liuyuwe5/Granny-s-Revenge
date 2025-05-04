@@ -119,7 +119,7 @@ script = ExtResource("1_i0gkp")
 position = Vector2(-4, -2.5)
 scale = Vector2(1.375, 1.32813)
 sprite_frames = SubResource("SpriteFrames_qp5sn")
-animation = &"death"
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_iduc2")

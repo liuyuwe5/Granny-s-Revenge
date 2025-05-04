@@ -51,6 +51,11 @@
 - player.tscn添加动画：idle，walk，dead
 
 ---
+
+## 🛠️ 2025-05-4 Update (战斗场景)
+-添加Level management ("Scripts/level_management.gd")
+
+
 ## 🛠️ 2025-04-16 Update (Options界面)
 - 添加双语按钮
 
