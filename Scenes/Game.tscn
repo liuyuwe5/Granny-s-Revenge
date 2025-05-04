@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d3u2y7qj0enwo"]
+[gd_scene load_steps=19 format=3 uid="uid://d3u2y7qj0enwo"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_1qtte"]
 [ext_resource type="PackedScene" uid="uid://gl1iys3k3ywe" path="res://Scenes/Enemy.tscn" id="2_mhqi4"]
@@ -8,14 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://c135ycpirm1vk" path="res://Assets/Sprites/Environment/parallax-01.png" id="6_lx6co"]
 [ext_resource type="Texture2D" uid="uid://b0tdctxgeaj" path="res://Assets/Sprites/Environment/parallax-03.png" id="7_k1dma"]
 [ext_resource type="Texture2D" uid="uid://c3md3515cy51c" path="res://Assets/Sprites/Environment/parallax-04.png" id="8_kudmt"]
+[ext_resource type="Script" path="res://Scripts/level_management.gd" id="11_ab7xv"]
 [ext_resource type="Shader" path="res://Shaders/Arrow.gdshader" id="11_klrqf"]
 [ext_resource type="Texture2D" uid="uid://cilb78t340xy3" path="res://Assets/Sprites/UI/arrow_isometric.png" id="11_ov2kw"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b0vyd"]
-load_path = "res://.godot/imported/background.png-294a3912cd9c8159c3f6ce8522bf708f.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bx6lf"]
-load_path = "res://.godot/imported/background_front.png-a8b5b442c601156dcf468d291cd2da23.ctex"
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_arhbn"]
 distance = 6.59044
@@ -161,3 +160,6 @@ rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_fycsu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="LevelManager" type="Node" parent="."]
+script = ExtResource("11_ab7xv")
