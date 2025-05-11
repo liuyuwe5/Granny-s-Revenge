@@ -1,0 +1,135 @@
+[gd_scene load_steps=15 format=3 uid="uid://cqkgw0kujnude"]
+
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_0uhhb"]
+[ext_resource type="PackedScene" uid="uid://gl1iys3k3ywe" path="res://Scenes/Enemy.tscn" id="2_juo0q"]
+[ext_resource type="Texture2D" uid="uid://dxulelg32bfgv" path="res://Assets/Sprites/Environment/ground.png" id="3_xwade"]
+[ext_resource type="PackedScene" uid="uid://bcmfox80hwm8a" path="res://Scenes/Player.tscn" id="4_4hpvl"]
+[ext_resource type="PackedScene" uid="uid://dq1swrwe7l7bx" path="res://Scenes/EnemyLily.tscn" id="5_ah0s7"]
+[ext_resource type="Shader" path="res://Shaders/Arrow.gdshader" id="9_fd8fa"]
+[ext_resource type="Texture2D" uid="uid://cilb78t340xy3" path="res://Assets/Sprites/UI/arrow_isometric.png" id="10_hic3m"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b0vyd"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bx6lf"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_arhbn"]
+distance = 6.59044
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_n73e6"]
+normal = Vector2(-4.37114e-08, -1)
+distance = 29.5692
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jecgk"]
+shader = ExtResource("9_fd8fa")
+shader_parameter/glow_color = Color(1, 1, 0.3, 1)
+shader_parameter/glow_strength = 0.5
+shader_parameter/pulse_speed = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbmbu"]
+atlas = ExtResource("10_hic3m")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fycsu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbmbu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("spawn_timer", "score_label", "player", "arrow_hint", "right_boundary")]
+script = ExtResource("1_0uhhb")
+enemy_scene = ExtResource("2_juo0q")
+spawn_timer = NodePath("Timer")
+score_label = NodePath("CanvasLayer/ScoreLabel")
+player = NodePath("Player")
+arrow_hint = NodePath("ArrowHint")
+right_boundary = NodePath("Boundary/RightBoundary/CollisionShape2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.84, 1.84)
+metadata/_edit_lock_ = true
+
+[node name="BackGround" type="Node2D" parent="."]
+
+[node name="BackgroundBack" type="Sprite2D" parent="BackGround"]
+scale = Vector2(2.014, 2)
+texture = SubResource("CompressedTexture2D_b0vyd")
+
+[node name="BackgroundFront" type="Sprite2D" parent="BackGround"]
+position = Vector2(0, -33)
+scale = Vector2(1.90659, 1.9)
+texture = SubResource("CompressedTexture2D_bx6lf")
+
+[node name="Ground" type="Sprite2D" parent="BackGround"]
+position = Vector2(0, -220)
+scale = Vector2(1.6, 4.4)
+texture = ExtResource("3_xwade")
+
+[node name="Player" parent="." instance=ExtResource("4_4hpvl")]
+position = Vector2(1, 25)
+
+[node name="EnemyLily" parent="." instance=ExtResource("5_ah0s7")]
+position = Vector2(176, 64)
+
+[node name="Boundary" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="TemperaryGround" type="StaticBody2D" parent="Boundary"]
+position = Vector2(1.19209e-07, 132)
+scale = Vector2(-13.1459, 5.46246)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/TemperaryGround"]
+position = Vector2(9.06815e-09, -6.59044)
+scale = Vector2(0.235312, 0.338505)
+shape = SubResource("WorldBoundaryShape2D_arhbn")
+
+[node name="LeftBoundary" type="StaticBody2D" parent="Boundary"]
+position = Vector2(-352, 0)
+scale = Vector2(1.2, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/LeftBoundary"]
+position = Vector2(20, 0)
+rotation = 1.5708
+scale = Vector2(3.2935, 1.08221)
+shape = SubResource("WorldBoundaryShape2D_n73e6")
+
+[node name="RightBoundary" type="StaticBody2D" parent="Boundary"]
+position = Vector2(336, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/RightBoundary"]
+position = Vector2(-8.00001, 0)
+rotation = -1.5708
+scale = Vector2(3.2935, 1.08221)
+shape = SubResource("WorldBoundaryShape2D_n73e6")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_right = 61.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 40
+text = "Score: 0"
+metadata/_edit_use_anchors_ = true
+
+[node name="GameoverLabel" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ArrowHint" type="AnimatedSprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.470588)
+self_modulate = Color(1, 1, 1, 0.494118)
+material = SubResource("ShaderMaterial_jecgk")
+position = Vector2(264, 56)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_fycsu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

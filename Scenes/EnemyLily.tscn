@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://dq1swrwe7l7bx"]
+
+[ext_resource type="Texture2D" uid="uid://dysxyu2gdbiht" path="res://Assets/Sprites/Enemies/小丽idle.png" id="1_oog3o"]
+[ext_resource type="Script" path="res://Scripts/enemy_lily.gd" id="1_pu4qt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gahf2"]
+atlas = ExtResource("1_oog3o")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yatxb"]
+atlas = ExtResource("1_oog3o")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfpvn"]
+atlas = ExtResource("1_oog3o")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xolst"]
+atlas = ExtResource("1_oog3o")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i7v8m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gahf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yatxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfpvn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xolst")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rd1gw"]
+radius = 8.0
+
+[node name="EnemyLily" type="Area2D"]
+script = ExtResource("1_pu4qt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.33333, 1.33333)
+sprite_frames = SubResource("SpriteFrames_i7v8m")
+animation = &"idle"
+frame_progress = 0.4415
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_rd1gw")
+
+[node name="TextSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-8, 0)
+
+[node name="TextBurstTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="TextBurstTimer" to="." method="_on_TextBurstTimer_timeout"]
