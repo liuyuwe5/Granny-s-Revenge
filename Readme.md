@@ -51,6 +51,9 @@
 - player.tscn添加动画：idle，walk，dead
 
 ---
+## 🛠️ 2025-05-11 Update (战斗场景)
+-多样化的敌人难度，不同的生命值和行走速度 ("Scripts/level_management.gd“， "Scripts/enemy.gd“)
+-不同level的敌人出场频率优化
 
 ## 🛠️ 2025-05-4 Update (战斗场景)
 -添加Level management ("Scripts/level_management.gd")
