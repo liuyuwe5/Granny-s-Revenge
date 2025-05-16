@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwv0tjuh14bsr"
-path="res://.godot/imported/enemy_rpg.png-2bd419350b1eee11002a711b8e1f385a.ctex"
+uid="uid://boitw44vy000e"
+path="res://.godot/imported/Mei_death.webp-442fbe92216f8f76826be4ff435d328b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Enemies/enemy_rpg.png"
-dest_files=["res://.godot/imported/enemy_rpg.png-2bd419350b1eee11002a711b8e1f385a.ctex"]
+source_file="res://Assets/Sprites/Player/Mei_death.webp"
+dest_files=["res://.godot/imported/Mei_death.webp-442fbe92216f8f76826be4ff435d328b.ctex"]
 
 [params]
 
