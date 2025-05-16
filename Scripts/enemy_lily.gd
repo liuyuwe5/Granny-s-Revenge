@@ -121,6 +121,7 @@ func _launch_words(words: Array[String], index: int):
 	add_child(timer)
 	timer.timeout.connect(func ():
 		_launch_words(words, index + 1)
+
 		timer.queue_free()
 	)
 	timer.start()

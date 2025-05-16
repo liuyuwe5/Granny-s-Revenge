@@ -1,5 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bedpwjq2ojpx0"]
 
+
 [ext_resource type="Texture2D" uid="uid://dysxyu2gdbiht" path="res://Assets/Sprites/Enemies/小丽idle.png" id="1_oog3o"]
 [ext_resource type="Script" path="res://Scripts/enemy_lily.gd" id="1_pu4qt"]
 
@@ -41,7 +42,9 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rd1gw"]
 radius = 8.0
+
 height = 32.0
+
 
 [node name="EnemyLily" type="Area2D"]
 script = ExtResource("1_pu4qt")
@@ -57,6 +60,7 @@ scale = Vector2(0.544541, 0.671539)
 shape = SubResource("CapsuleShape2D_rd1gw")
 
 [node name="TextSpawnPoint" type="Marker2D" parent="."]
+
 
 [node name="TextBurstTimer" type="Timer" parent="."]
 wait_time = 5.0

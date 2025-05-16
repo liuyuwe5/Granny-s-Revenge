@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d3u2y7qj0enwo"]
+[gd_scene load_steps=18 format=3 uid="uid://d3u2y7qj0enwo"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_1qtte"]
 [ext_resource type="PackedScene" uid="uid://gl1iys3k3ywe" path="res://Scenes/Enemy.tscn" id="2_mhqi4"]

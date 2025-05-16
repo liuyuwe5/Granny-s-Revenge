@@ -4,7 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://gl1iys3k3ywe" path="res://Scenes/Enemy.tscn" id="2_juo0q"]
 [ext_resource type="Texture2D" uid="uid://dxulelg32bfgv" path="res://Assets/Sprites/Environment/ground.png" id="3_xwade"]
 [ext_resource type="PackedScene" uid="uid://bcmfox80hwm8a" path="res://Scenes/Player.tscn" id="4_4hpvl"]
+
 [ext_resource type="PackedScene" uid="uid://bedpwjq2ojpx0" path="res://Scenes/EnemyLily.tscn" id="5_ah0s7"]
+
 [ext_resource type="Shader" path="res://Shaders/Arrow.gdshader" id="9_fd8fa"]
 [ext_resource type="Texture2D" uid="uid://cilb78t340xy3" path="res://Assets/Sprites/UI/arrow_isometric.png" id="10_hic3m"]
 
@@ -71,6 +73,7 @@ texture = ExtResource("3_xwade")
 
 [node name="Player" parent="." instance=ExtResource("4_4hpvl")]
 position = Vector2(1, 25)
+
 scale = Vector2(2, 2)
 
 [node name="EnemyLily" parent="." instance=ExtResource("5_ah0s7")]
