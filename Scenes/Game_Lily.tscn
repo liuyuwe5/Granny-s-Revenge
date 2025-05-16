@@ -1,18 +1,19 @@
-[gd_scene load_steps=19 format=3 uid="uid://d3u2y7qj0enwo"]
+[gd_scene load_steps=20 format=3 uid="uid://bfidyhu3q8kgn"]
 
-[ext_resource type="Script" path="res://Scripts/game.gd" id="1_1qtte"]
-[ext_resource type="PackedScene" uid="uid://gl1iys3k3ywe" path="res://Scenes/Enemy.tscn" id="2_mhqi4"]
-[ext_resource type="PackedScene" uid="uid://bcmfox80hwm8a" path="res://Scenes/Player.tscn" id="2_vkrvg"]
-[ext_resource type="Texture2D" uid="uid://cphwnneh6uktl" path="res://Assets/Sprites/Environment/modern_city_back.png" id="3_1bbd2"]
-[ext_resource type="Texture2D" uid="uid://dofucsl0sogs2" path="res://Assets/Sprites/Environment/modern_city_middle.png" id="4_1spyg"]
-[ext_resource type="Texture2D" uid="uid://wb3btaqgblyq" path="res://Assets/Sprites/Environment/modern_city_front.png" id="5_hk6om"]
-[ext_resource type="Texture2D" uid="uid://cu0uonrxrk8l2" path="res://Assets/Sprites/Environment/parallax-00.png" id="5_x5uv4"]
-[ext_resource type="Texture2D" uid="uid://d25g6nj4x4vnp" path="res://Assets/Sprites/Environment/modern_city_ground.png" id="6_8u5ev"]
-[ext_resource type="Texture2D" uid="uid://c135ycpirm1vk" path="res://Assets/Sprites/Environment/parallax-01.png" id="6_lx6co"]
-[ext_resource type="Texture2D" uid="uid://b0tdctxgeaj" path="res://Assets/Sprites/Environment/parallax-03.png" id="7_k1dma"]
-[ext_resource type="Texture2D" uid="uid://c3md3515cy51c" path="res://Assets/Sprites/Environment/parallax-04.png" id="8_kudmt"]
-[ext_resource type="Shader" path="res://Shaders/Arrow.gdshader" id="11_klrqf"]
-[ext_resource type="Texture2D" uid="uid://cilb78t340xy3" path="res://Assets/Sprites/UI/arrow_isometric.png" id="11_ov2kw"]
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_vwwhk"]
+[ext_resource type="PackedScene" uid="uid://gl1iys3k3ywe" path="res://Scenes/Enemy.tscn" id="2_eq1ta"]
+[ext_resource type="Texture2D" uid="uid://cphwnneh6uktl" path="res://Assets/Sprites/Environment/modern_city_back.png" id="3_hphka"]
+[ext_resource type="Texture2D" uid="uid://dofucsl0sogs2" path="res://Assets/Sprites/Environment/modern_city_middle.png" id="4_1owm5"]
+[ext_resource type="Texture2D" uid="uid://wb3btaqgblyq" path="res://Assets/Sprites/Environment/modern_city_front.png" id="5_oofs6"]
+[ext_resource type="Texture2D" uid="uid://d25g6nj4x4vnp" path="res://Assets/Sprites/Environment/modern_city_ground.png" id="6_ddnd5"]
+[ext_resource type="PackedScene" uid="uid://bedpwjq2ojpx0" path="res://Scenes/EnemyLily.tscn" id="7_ntjvf"]
+[ext_resource type="PackedScene" uid="uid://bcmfox80hwm8a" path="res://Scenes/Player.tscn" id="8_a60nv"]
+[ext_resource type="Texture2D" uid="uid://cu0uonrxrk8l2" path="res://Assets/Sprites/Environment/parallax-00.png" id="9_wrdfv"]
+[ext_resource type="Texture2D" uid="uid://c135ycpirm1vk" path="res://Assets/Sprites/Environment/parallax-01.png" id="10_be3ke"]
+[ext_resource type="Texture2D" uid="uid://b0tdctxgeaj" path="res://Assets/Sprites/Environment/parallax-03.png" id="11_1yoj1"]
+[ext_resource type="Texture2D" uid="uid://c3md3515cy51c" path="res://Assets/Sprites/Environment/parallax-04.png" id="12_lp5ur"]
+[ext_resource type="Shader" path="res://Shaders/Arrow.gdshader" id="13_1qp7o"]
+[ext_resource type="Texture2D" uid="uid://cilb78t340xy3" path="res://Assets/Sprites/UI/arrow_isometric.png" id="14_fup72"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_arhbn"]
 distance = 6.59044
@@ -22,13 +23,13 @@ normal = Vector2(-4.37114e-08, -1)
 distance = 29.5692
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jecgk"]
-shader = ExtResource("11_klrqf")
+shader = ExtResource("13_1qp7o")
 shader_parameter/glow_color = Color(1, 1, 0.3, 1)
 shader_parameter/glow_strength = 0.5
 shader_parameter/pulse_speed = 2.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mbmbu"]
-atlas = ExtResource("11_ov2kw")
+atlas = ExtResource("14_fup72")
 region = Rect2(0, 96, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fycsu"]
@@ -43,8 +44,8 @@ animations = [{
 }]
 
 [node name="Node2D" type="Node2D" node_paths=PackedStringArray("spawn_timer", "score_label", "player", "arrow_hint", "right_boundary")]
-script = ExtResource("1_1qtte")
-enemy_scene = ExtResource("2_mhqi4")
+script = ExtResource("1_vwwhk")
+enemy_scene = ExtResource("2_eq1ta")
 spawn_timer = NodePath("Timer")
 score_label = NodePath("CanvasLayer/ScoreLabel")
 player = NodePath("Player")
@@ -59,17 +60,17 @@ metadata/_edit_lock_ = true
 
 [node name="BackgroundBack" type="Sprite2D" parent="BackGround"]
 scale = Vector2(2.014, 1.95552)
-texture = ExtResource("3_1bbd2")
+texture = ExtResource("3_hphka")
 
 [node name="BackgroundMiddle" type="Sprite2D" parent="BackGround"]
 scale = Vector2(1.84566, 1.97609)
-texture = ExtResource("4_1spyg")
+texture = ExtResource("4_1owm5")
 
 [node name="BackgroundFront" type="Sprite2D" parent="BackGround"]
 visible = false
 position = Vector2(-8, 0)
 scale = Vector2(1.94042, 1.96505)
-texture = ExtResource("5_hk6om")
+texture = ExtResource("5_oofs6")
 
 [node name="ColorRect" type="ColorRect" parent="BackGround"]
 visible = false
@@ -82,9 +83,13 @@ color = Color(0, 0, 0, 0.329412)
 
 [node name="Ground" type="Sprite2D" parent="BackGround"]
 scale = Vector2(-1.97296, 1.94136)
-texture = ExtResource("6_8u5ev")
+texture = ExtResource("6_ddnd5")
 
-[node name="Player" parent="." instance=ExtResource("2_vkrvg")]
+[node name="EnemyLily" parent="." instance=ExtResource("7_ntjvf")]
+position = Vector2(136, 88)
+scale = Vector2(4, 4)
+
+[node name="Player" parent="." instance=ExtResource("8_a60nv")]
 position = Vector2(0, 24)
 scale = Vector2(4, 4)
 
@@ -128,25 +133,25 @@ visible = false
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource("5_x5uv4")
+texture = ExtResource("9_wrdfv")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.2, 0.2)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-texture = ExtResource("6_lx6co")
+texture = ExtResource("10_be3ke")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.1, 0.1)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-texture = ExtResource("7_k1dma")
+texture = ExtResource("11_1yoj1")
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.9, 0.9)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
-texture = ExtResource("8_kudmt")
+texture = ExtResource("12_lp5ur")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -1,0 +1,139 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy7l1r0jbxjeu"]
+
+[sub_resource type="GDScript" id="GDScript_f04qj"]
+script/source = "#extends Area2D
+#
+#@export var sentence: String = \"AI STRATEGY ROAD MAP MATURITY\"
+#@export var speed: float = 100.0
+#@export var delay_between_chars: float = 0.1
+#@export var max_distance: float = 100.0
+#
+#var current_index := 0
+#var built_text := \"\"
+#var move_dir := Vector2.LEFT
+#var start_position := Vector2.ZERO
+#
+#func set_direction(dir: Vector2):
+	#move_dir = dir.normalized()
+#
+#func _ready():
+	#start_position = global_position
+	#start_typing()
+#
+#func _process(delta):
+	#position += move_dir * speed * delta
+#
+	#if global_position.distance_to(start_position) > max_distance:
+		#queue_free()
+#
+#func start_typing():
+	#add_char()
+#
+#func add_char():
+	#if current_index >= sentence.length():
+		#return
+	#built_text += sentence[current_index]
+	#$Label.text = built_text
+	#current_index += 1
+#
+	#update_collision_size()
+#
+	#var timer = Timer.new()
+	#timer.one_shot = true
+	#timer.wait_time = delay_between_chars
+	#add_child(timer)
+	#timer.timeout.connect(func ():
+		#add_char()
+		#timer.queue_free()
+	#)
+	#timer.start()
+#
+#func update_collision_size():
+	#await get_tree().process_frame
+	#var size = $Label.get_size()
+	#if $CollisionShape2D.shape is RectangleShape2D:
+		#var shape = $CollisionShape2D.shape as RectangleShape2D
+		#shape.size = size + Vector2(4, 4)
+
+extends Area2D
+
+@export var sentence: String = \"AI STRATEGY ROAD MAP MATURITY\"
+@export var delay_between_chars: float = 0.1
+@export var speed: float = 100.0
+@export var max_distance: float = 400.0
+@export var damage: int = 20
+
+var current_index := 0
+var built_text := \"\"
+var move_dir: Vector2 = Vector2.LEFT
+var start_position: Vector2
+
+func _ready():
+	start_position = global_position
+	#body_entered.connect(_on_body_entered)
+	start_typing()
+
+func set_direction(dir: Vector2):
+	move_dir = dir.normalized()
+
+func _process(delta):
+	position += move_dir * speed * delta
+	if global_position.distance_to(start_position) > max_distance:
+		queue_free()
+
+func start_typing():
+	add_char()
+
+func add_char():
+	if current_index >= sentence.length():
+		return
+
+	built_text += sentence[current_index]
+	current_index += 1
+	$TextMaskPanel/Label.text = built_text
+
+	update_collision_size()
+
+	var timer = Timer.new()
+	timer.one_shot = true
+	timer.wait_time = delay_between_chars
+	add_child(timer)
+
+	timer.timeout.connect(func ():
+		add_char()
+		timer.queue_free()
+	)
+	timer.start()
+
+func update_collision_size():
+	await get_tree().process_frame
+
+	var label_size = $TextMaskPanel/Label.get_size()
+	var max_width = $TextMaskPanel.size.x
+	var visible_width = min(label_size.x, max_width)
+
+	if $CollisionShape2D.shape is RectangleShape2D:
+		var shape = $CollisionShape2D.shape as RectangleShape2D
+		shape.size = Vector2(visible_width, label_size.y + 4)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1tfrp"]
+size = Vector2(50, 26)
+
+[node name="TextWave" type="Area2D"]
+script = SubResource("GDScript_f04qj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(23, 11)
+shape = SubResource("RectangleShape2D_1tfrp")
+
+[node name="TextMaskPanel" type="Panel" parent="."]
+clip_contents = true
+offset_right = 100.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="TextMaskPanel"]
+layout_mode = 0
+offset_right = 47.0
+offset_bottom = 23.0
+text = "Attact"

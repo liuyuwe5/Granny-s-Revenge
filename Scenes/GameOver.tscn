@@ -1,19 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkdphr1jqlj1y"]
+[gd_scene load_steps=4 format=3 uid="uid://dkdphr1jqlj1y"]
 
 [ext_resource type="Script" path="res://Scripts/gameover.gd" id="1_51dym"]
+[ext_resource type="Texture2D" uid="uid://7py3npt1v68y" path="res://Assets/Sprites/Game_over_1.png" id="2_2lx3x"]
+[ext_resource type="FontFile" uid="uid://brkwwwbqh7f18" path="res://Assets/font/Uranus_Pixel_11Px.ttf" id="3_gvl5u"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -1.0
-offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_51dym")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 320)
+scale = Vector2(0.360786, 0.367889)
+texture = ExtResource("2_2lx3x")
+
 [node name="GameOverLabel" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 314.0
 offset_top = 188.0
@@ -28,23 +34,38 @@ offset_left = 587.0
 offset_top = 319.0
 offset_right = 627.0
 offset_bottom = 342.0
-theme_override_font_sizes/font_size = 40
+theme_override_colors/font_color = Color(0.968627, 0.898039, 0.615686, 1)
+theme_override_colors/font_shadow_color = Color(0.67451, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("3_gvl5u")
+theme_override_font_sizes/font_size = 50
 text = "Title"
 
 [node name="Restart" type="Button" parent="."]
 layout_mode = 0
-offset_left = 316.0
-offset_top = 422.0
-offset_right = 381.0
-offset_bottom = 453.0
-theme_override_font_sizes/font_size = 40
+offset_left = 776.0
+offset_top = 392.0
+offset_right = 924.0
+offset_bottom = 455.0
+theme_override_colors/font_pressed_color = Color(0.94902, 0.45098, 0.168627, 1)
+theme_override_colors/font_color = Color(0.968627, 0.898039, 0.615686, 1)
+theme_override_fonts/font = ExtResource("3_gvl5u")
+theme_override_font_sizes/font_size = 30
 text = "Restart"
+flat = true
 
 [node name="Quit" type="Button" parent="."]
 layout_mode = 0
-offset_left = 781.0
-offset_top = 422.0
-offset_right = 873.0
-offset_bottom = 485.0
-theme_override_font_sizes/font_size = 40
+offset_left = 984.0
+offset_top = 392.0
+offset_right = 1084.0
+offset_bottom = 455.0
+theme_override_colors/font_pressed_color = Color(0.94902, 0.45098, 0.168627, 1)
+theme_override_colors/font_color = Color(0.968627, 0.898039, 0.615686, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("3_gvl5u")
+theme_override_font_sizes/font_size = 30
 text = "Quit"
+flat = true

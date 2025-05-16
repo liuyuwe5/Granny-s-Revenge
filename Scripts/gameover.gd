@@ -7,15 +7,24 @@ extends Control
 #@onready var tween = create_tween()
 
 var death_titles = [
-	"勇敢的理想主义者",
-	"血色黎明的追随者",
-	"坚韧的乌托邦筑梦人",
-	"社会主义铁拳的传人",
-	"现实中的浪漫斗士",
-	"反叛的诗人",
-	"暴风雨前的火种",
-	"被钞票碾过的英雄",
-	"资本废墟上的花朵"
+	#"勇敢的理想主义者",
+	#"血色黎明的追随者",
+	#"坚韧的乌托邦筑梦人",
+	#"社会主义铁拳的传人",
+	#"现实中的浪漫斗士",
+	#"反叛的诗人",
+	#"暴风雨前的火种",
+	#"被钞票碾过的英雄",
+	#"资本废墟上的花朵"
+	"Brave Idealist",
+	"Follower of the Crimson Dawn",
+	"Resilient Dreamer of Utopia",
+	"Heir to the Socialist Iron Fist",
+	"Romantic Fighter in Reality",
+	"Rebellious Poet",
+	"Spark Before the Storm",
+	"Hero Crushed by Currency",
+	"Flower Amid the Ruins of Capitalism"
 ]
 
 # Called when the node enters the scene tree for the first time.
@@ -42,7 +51,7 @@ func _ready() -> void:
 	# 把 label 位置先放到屏幕右边外面
 	await get_tree().process_frame  # 等待一帧以确保大小更新
 	var screen_width = get_viewport_rect().size.x
-	var target_x = (screen_width - title_label.size.x) / 2
+	var target_x = (screen_width - title_label.size.x - 350) / 2
 	title_label.position.x = screen_width + 100  # 超出屏幕一点
 
 	# 动画移动到中间
