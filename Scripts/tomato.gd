@@ -1,7 +1,7 @@
 extends Area2D
 
-@export var velocity = Vector2(300, -400)
-@export var gravity_tomato = 50  # 每秒加速度，手动模拟下落
+@export var velocity = Vector2(600, -400)
+@export var gravity_tomato = 80  # 每秒加速度，手动模拟下落
 var exploded = false
 
 func _ready():
@@ -14,7 +14,7 @@ func _process(delta):
 		return
 	
 	velocity.y += gravity_tomato * delta
-	position += velocity * delta
+	position += velocity * delta * 2
 
 func _on_body_entered(body):
 	if exploded or body == owner:
