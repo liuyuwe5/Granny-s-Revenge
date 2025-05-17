@@ -1,9 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://df1fvu4fd1sib"]
+[gd_scene load_steps=4 format=3 uid="uid://dvdp3d840t0kq"]
 
 [ext_resource type="Script" path="res://Scripts/text_wave.gd" id="1_y1ob1"]
 [ext_resource type="FontFile" uid="uid://brkwwwbqh7f18" path="res://Assets/font/Uranus_Pixel_11Px.ttf" id="2_kqc8j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8aop"]
+size = Vector2(66, 18)
 
 [node name="TextWave" type="Area2D"]
 script = ExtResource("1_y1ob1")
@@ -24,4 +25,6 @@ offset_right = 100.0
 offset_bottom = 40.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(31, 7)
+scale = Vector2(0.905104, 0.747457)
 shape = SubResource("RectangleShape2D_t8aop")

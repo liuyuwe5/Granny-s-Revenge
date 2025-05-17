@@ -157,7 +157,7 @@ func _initialize_later():
 	# 安全地等待一帧再获取 label 尺寸
 	var t = Timer.new()
 	t.one_shot = true
-	t.wait_time = 5  # 等 1 帧
+	t.wait_time = 0.01 # 等 1 帧
 	add_child(t)
 	t.timeout.connect(func ():
 		_update_collision_size()
@@ -170,11 +170,18 @@ func _update_collision_size():
 	#if $CollisionShape2D.shape is RectangleShape2D:
 		#var shape = $CollisionShape2D.shape as RectangleShape2D
 		#shape.size = label_size  # + Vector2(6, 4)
+	#var label_size = $Label.get_size()
+	#if $CollisionShape2D.shape is RectangleShape2D:
+		#var shape = $CollisionShape2D.shape as RectangleShape2D
+		## 缩小碰撞框为文字的一部分，例如宽高 40%
+		#shape.size = label_size * Vector2(0.8, 0.8)
+	await get_tree().process_frame  # 确保 Label 尺寸已更新
+
 	var label_size = $Label.get_size()
 	if $CollisionShape2D.shape is RectangleShape2D:
 		var shape = $CollisionShape2D.shape as RectangleShape2D
-		# 缩小碰撞框为文字的一部分，例如宽高 40%
-		shape.size = label_size * Vector2(0.4, 0.4)
+		shape.size = label_size * Vector2(0.8, 0.8)  # 可根据需要缩放/padding
+
 		
 
 
@@ -183,7 +190,12 @@ func _process(delta):
 	position += velocity * delta
 
 func _on_body_entered(body: Node):
-	if body.name == "Player" or body.is_in_group("player"):
+	if body is CharacterBody2D: # and not is_dead:
+		$Label.add_theme_color_override("font_color", Color.PAPAYA_WHIP)
+		$Label.add_theme_color_override("font_outline_color", Color.DARK_RED)
 		if body.has_method("take_damage"):
-			body.take_damage(damage)
+			body.take_damage()
+		
+		await get_tree().create_timer(0.2).timeout  # 停留 0.1 秒
+		
 		queue_free()

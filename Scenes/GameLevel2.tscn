@@ -1,19 +1,21 @@
-[gd_scene load_steps=20 format=3 uid="uid://bfidyhu3q8kgn"]
+[gd_scene load_steps=22 format=3 uid="uid://dnudcwrj3bj5i"]
 
-[ext_resource type="Script" path="res://Scripts/game.gd" id="1_vwwhk"]
-[ext_resource type="PackedScene" uid="uid://gl1iys3k3ywe" path="res://Scenes/Enemy.tscn" id="2_eq1ta"]
-[ext_resource type="Texture2D" uid="uid://cphwnneh6uktl" path="res://Assets/Sprites/Environment/modern_city_back.png" id="3_hphka"]
-[ext_resource type="Texture2D" uid="uid://dofucsl0sogs2" path="res://Assets/Sprites/Environment/modern_city_middle.png" id="4_1owm5"]
-[ext_resource type="Texture2D" uid="uid://wb3btaqgblyq" path="res://Assets/Sprites/Environment/modern_city_front.png" id="5_oofs6"]
-[ext_resource type="Texture2D" uid="uid://d25g6nj4x4vnp" path="res://Assets/Sprites/Environment/modern_city_ground.png" id="6_ddnd5"]
-[ext_resource type="PackedScene" uid="uid://bedpwjq2ojpx0" path="res://Scenes/EnemyLily.tscn" id="7_ntjvf"]
-[ext_resource type="PackedScene" uid="uid://bcmfox80hwm8a" path="res://Scenes/Player.tscn" id="8_a60nv"]
-[ext_resource type="Texture2D" uid="uid://cu0uonrxrk8l2" path="res://Assets/Sprites/Environment/parallax-00.png" id="9_wrdfv"]
-[ext_resource type="Texture2D" uid="uid://c135ycpirm1vk" path="res://Assets/Sprites/Environment/parallax-01.png" id="10_be3ke"]
-[ext_resource type="Texture2D" uid="uid://b0tdctxgeaj" path="res://Assets/Sprites/Environment/parallax-03.png" id="11_1yoj1"]
-[ext_resource type="Texture2D" uid="uid://c3md3515cy51c" path="res://Assets/Sprites/Environment/parallax-04.png" id="12_lp5ur"]
-[ext_resource type="Shader" path="res://Shaders/Arrow.gdshader" id="13_1qp7o"]
-[ext_resource type="Texture2D" uid="uid://cilb78t340xy3" path="res://Assets/Sprites/UI/arrow_isometric.png" id="14_fup72"]
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_4u8c6"]
+[ext_resource type="PackedScene" uid="uid://gl1iys3k3ywe" path="res://Scenes/Enemy.tscn" id="2_68fcd"]
+[ext_resource type="Texture2D" uid="uid://cphwnneh6uktl" path="res://Assets/Sprites/Environment/modern_city_back.png" id="3_gndl5"]
+[ext_resource type="Texture2D" uid="uid://dofucsl0sogs2" path="res://Assets/Sprites/Environment/modern_city_middle.png" id="4_si27h"]
+[ext_resource type="Texture2D" uid="uid://618vgyurxgip" path="res://Assets/Sprites/Environment/摩登城市.png" id="5_3htm5"]
+[ext_resource type="Texture2D" uid="uid://d25g6nj4x4vnp" path="res://Assets/Sprites/Environment/modern_city_ground.png" id="6_hv7cx"]
+[ext_resource type="PackedScene" uid="uid://bcmfox80hwm8a" path="res://Scenes/Player.tscn" id="7_lkr8f"]
+[ext_resource type="Texture2D" uid="uid://cu0uonrxrk8l2" path="res://Assets/Sprites/Environment/parallax-00.png" id="8_cgoh2"]
+[ext_resource type="Texture2D" uid="uid://dhv2akpdjo3dc" path="res://Assets/Sprites/UI/pixel heart/1.png" id="8_dlt1s"]
+[ext_resource type="Texture2D" uid="uid://c135ycpirm1vk" path="res://Assets/Sprites/Environment/parallax-01.png" id="9_ghnqc"]
+[ext_resource type="Texture2D" uid="uid://4ggcg6ol68y4" path="res://Assets/Sprites/UI/pixel heart/4.png" id="9_qt166"]
+[ext_resource type="Texture2D" uid="uid://b0tdctxgeaj" path="res://Assets/Sprites/Environment/parallax-03.png" id="10_rss6r"]
+[ext_resource type="Texture2D" uid="uid://c3md3515cy51c" path="res://Assets/Sprites/Environment/parallax-04.png" id="11_8ca8w"]
+[ext_resource type="Shader" path="res://Shaders/Arrow.gdshader" id="12_f04hg"]
+[ext_resource type="Texture2D" uid="uid://cilb78t340xy3" path="res://Assets/Sprites/UI/arrow_isometric.png" id="13_i3v1a"]
+[ext_resource type="Script" path="res://Scripts/level_management.gd" id="14_crrgc"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_arhbn"]
 distance = 6.59044
@@ -23,13 +25,13 @@ normal = Vector2(-4.37114e-08, -1)
 distance = 29.5692
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jecgk"]
-shader = ExtResource("13_1qp7o")
+shader = ExtResource("12_f04hg")
 shader_parameter/glow_color = Color(1, 1, 0.3, 1)
 shader_parameter/glow_strength = 0.5
 shader_parameter/pulse_speed = 2.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mbmbu"]
-atlas = ExtResource("14_fup72")
+atlas = ExtResource("13_i3v1a")
 region = Rect2(0, 96, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fycsu"]
@@ -44,10 +46,11 @@ animations = [{
 }]
 
 [node name="Node2D" type="Node2D" node_paths=PackedStringArray("spawn_timer", "score_label", "player", "arrow_hint", "right_boundary")]
-script = ExtResource("1_vwwhk")
-enemy_scene = ExtResource("2_eq1ta")
+script = ExtResource("1_4u8c6")
+enemy_scene = ExtResource("2_68fcd")
 spawn_timer = NodePath("Timer")
 score_label = NodePath("CanvasLayer/ScoreLabel")
+next_level_path = "res://Scenes/StoryLevel2.tscn"
 player = NodePath("Player")
 arrow_hint = NodePath("ArrowHint")
 right_boundary = NodePath("Boundary/RightBoundary/CollisionShape2D")
@@ -60,17 +63,16 @@ metadata/_edit_lock_ = true
 
 [node name="BackgroundBack" type="Sprite2D" parent="BackGround"]
 scale = Vector2(2.014, 1.95552)
-texture = ExtResource("3_hphka")
+texture = ExtResource("3_gndl5")
 
 [node name="BackgroundMiddle" type="Sprite2D" parent="BackGround"]
 scale = Vector2(1.84566, 1.97609)
-texture = ExtResource("4_1owm5")
+texture = ExtResource("4_si27h")
 
 [node name="BackgroundFront" type="Sprite2D" parent="BackGround"]
-visible = false
-position = Vector2(-8, 0)
-scale = Vector2(1.94042, 1.96505)
-texture = ExtResource("5_oofs6")
+position = Vector2(24, 0)
+scale = Vector2(1.82571, 1.95725)
+texture = ExtResource("5_3htm5")
 
 [node name="ColorRect" type="ColorRect" parent="BackGround"]
 visible = false
@@ -83,15 +85,13 @@ color = Color(0, 0, 0, 0.329412)
 
 [node name="Ground" type="Sprite2D" parent="BackGround"]
 scale = Vector2(-1.97296, 1.94136)
-texture = ExtResource("6_ddnd5")
+texture = ExtResource("6_hv7cx")
 
-[node name="EnemyLily" parent="." instance=ExtResource("7_ntjvf")]
-position = Vector2(136, 88)
-scale = Vector2(4, 4)
-
-[node name="Player" parent="." instance=ExtResource("8_a60nv")]
+[node name="Player" parent="." instance=ExtResource("7_lkr8f")]
 position = Vector2(0, 24)
 scale = Vector2(4, 4)
+full_heart_texture = ExtResource("8_dlt1s")
+empty_heart_texture = ExtResource("9_qt166")
 
 [node name="Boundary" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -133,29 +133,43 @@ visible = false
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource("9_wrdfv")
+texture = ExtResource("8_cgoh2")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.2, 0.2)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-texture = ExtResource("10_be3ke")
+texture = ExtResource("9_ghnqc")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.1, 0.1)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-texture = ExtResource("11_1yoj1")
+texture = ExtResource("10_rss6r")
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.9, 0.9)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
-texture = ExtResource("12_lp5ur")
+texture = ExtResource("11_8ca8w")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="HeartContainer" type="HBoxContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Heart1" type="TextureRect" parent="CanvasLayer/HeartContainer"]
+layout_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="CanvasLayer/HeartContainer"]
+layout_mode = 2
+
+[node name="Heart3" type="TextureRect" parent="CanvasLayer/HeartContainer"]
+layout_mode = 2
+
 [node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+visible = false
 offset_right = 61.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 40
@@ -163,6 +177,7 @@ text = "Score: 0"
 metadata/_edit_use_anchors_ = true
 
 [node name="GameoverLabel" type="Label" parent="CanvasLayer"]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 metadata/_edit_use_anchors_ = true
@@ -177,3 +192,7 @@ rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_fycsu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="LevelManager" type="Node" parent="."]
+script = ExtResource("14_crrgc")
+level_number = 2
