@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dnx0kit32agqb"]
 
-[ext_resource type="Script" path="res://Scenes/text_bullet.gd" id="1_pttc7"]
+[ext_resource type="Script" path="res://text_bullet.gd" id="1_pttc7"]
 [ext_resource type="FontFile" uid="uid://brkwwwbqh7f18" path="res://Assets/font/Uranus_Pixel_11Px.ttf" id="2_yxyl0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8aop"]
