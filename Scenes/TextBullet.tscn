@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnx0kit32agqb"]
+
+[ext_resource type="Script" path="res://text_bullet.gd" id="1_pttc7"]
+[ext_resource type="FontFile" uid="uid://brkwwwbqh7f18" path="res://Assets/font/Uranus_Pixel_11Px.ttf" id="2_yxyl0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t8aop"]
+size = Vector2(66, 18)
+
+[node name="TextWave" type="Area2D"]
+script = ExtResource("1_pttc7")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_yxyl0")
+theme_override_font_sizes/font_size = 15
+text = "DEFAULT"
+
+[node name="TextMaskPanel" type="Panel" parent="."]
+visible = false
+offset_right = 100.0
+offset_bottom = 40.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(31, 7)
+scale = Vector2(0.905104, 0.747457)
+shape = SubResource("RectangleShape2D_t8aop")

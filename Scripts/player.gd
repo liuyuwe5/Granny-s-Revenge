@@ -14,10 +14,15 @@ var tomato_speed = 100
 var can_control := true  # Control whether the player can move/shoot
 var win_scene:= false # if in win scene
 var can_throw := true
+@export var max_hearts := 3
+var current_hearts := 3
+@export var full_heart_texture: Texture
+@export var empty_heart_texture: Texture
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	update_hearts_ui()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -74,6 +79,26 @@ func throw_tomato():
 	# 设置速度大小
 
 	tomato.velocity = throw_direction * tomato_speed
+
+func take_damage():
+	if is_game_over:
+		return
+
+	current_hearts -= 1
+	update_hearts_ui()
+
+	if current_hearts <= 0:
+		game_over()
+
+func update_hearts_ui():
+	var container = get_tree().current_scene.get_node("CanvasLayer/HeartContainer")
+	for i in range(max_hearts):
+		var heart = container.get_child(i)
+		if i < current_hearts:
+			heart.texture = full_heart_texture
+		else:
+			heart.texture = empty_heart_texture
+
 
 func game_over():
 	if not is_game_over:

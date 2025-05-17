@@ -1,7 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://bcmfox80hwm8a"]
+[gd_scene load_steps=30 format=3 uid="uid://bcmfox80hwm8a"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_6ad7m"]
 [ext_resource type="PackedScene" uid="uid://dcnq8jim8v701" path="res://Scenes/Tomato.tscn" id="2_ggsxf"]
+[ext_resource type="Texture2D" uid="uid://dhv2akpdjo3dc" path="res://Assets/Sprites/UI/pixel heart/1.png" id="2_w6prk"]
+[ext_resource type="Texture2D" uid="uid://4ggcg6ol68y4" path="res://Assets/Sprites/UI/pixel heart/4.png" id="3_pcdji"]
 [ext_resource type="Texture2D" uid="uid://boitw44vy000e" path="res://Assets/Sprites/Player/Mei_death.webp" id="3_se62x"]
 [ext_resource type="Texture2D" uid="uid://dvi7y68snoatm" path="res://Assets/Sprites/Player/Mei_walk .webp" id="4_4ilyq"]
 [ext_resource type="Texture2D" uid="uid://ct5crsj0mmcp2" path="res://Assets/Sprites/Player/Mei_Idle.webp" id="4_amqgg"]
@@ -173,6 +175,8 @@ position = Vector2(2, 0)
 script = ExtResource("1_6ad7m")
 animator = NodePath("AnimatedSprite2D")
 tomato_scene = ExtResource("2_ggsxf")
+full_heart_texture = ExtResource("2_w6prk")
+empty_heart_texture = ExtResource("3_pcdji")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_70prq")

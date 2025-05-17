@@ -1,42 +1,109 @@
+#extends Area2D
+#
+#@export var speed := 50
+#var direction := -1  # -1 = 向左，1 = 向右
+#var is_dead := false
+#@export var health := 1  # Default value, can be set by LevelManager
+#
+#func _process(delta):
+	#
+	#
+	#if is_dead:
+		#return
+	#
+	#position.x += direction * speed * delta
+	#
+	## 播放统一 walk 动画
+	#$AnimatedSprite2D.scale = Vector2(2.0, 1.0)  
+	#$AnimatedSprite2D.play("walk")
+	#
+	## 控制左右翻转（面朝方向）
+	#$AnimatedSprite2D.scale.x = direction
+#
+#func take_damage(amount: int = 1):
+	#if is_dead:
+		#return
+#
+	#health -= amount
+#
+	#if health <= 0:
+		#die()
+#
+#
+#func die():
+	#is_dead = true
+	#$AnimatedSprite2D.play("death")
+#
+	## Optional: Add sound or particle effects here
+#
+	#if get_tree().current_scene.has_method("increment_score"):
+		#get_tree().current_scene.increment_score()
+#
+	#await get_tree().create_timer(0.6).timeout
+	#queue_free()
+#
+#func _on_area_entered(area: Area2D) -> void:
+	#if area.is_in_group("Tomato") and not is_dead:
+		#take_damage(1)
+		#area.queue_free()
+#
+#
+#func _on_body_entered(body: Node2D) -> void:
+	#
+	#if body is CharacterBody2D and not is_dead:
+		#print("entered and player")
+		#body.game_over()
 extends Area2D
 
 @export var speed := 50
-var direction := -1  # -1 = 向左，1 = 向右
+@export var health := 1
+var direction := -1
 var is_dead := false
-@export var health := 1  # Default value, can be set by LevelManager
+var enemy_type := "small"
+
+func configure(_speed: float, _health: int, _direction: int, _type: String):
+	speed = _speed
+	health = _health
+	direction = _direction
+	enemy_type = _type
 
 func _process(delta):
-	#print("Frame size: ", $AnimatedSprite2D.get_sprite_frames().get_frame_texture("walk", 0).get_size())
-	
-	
 	if is_dead:
 		return
-	#print("Frame size: ", $AnimatedSprite2D.get_sprite_frames().get_frame_texture("walk", 0).get_size())
-	
+
 	position.x += direction * speed * delta
 	
-	# 播放统一 walk 动画
-	$AnimatedSprite2D.scale = Vector2(2.0, 1.0)  
-	$AnimatedSprite2D.play("walk")
-	
-	# 控制左右翻转（面朝方向）
-	$AnimatedSprite2D.scale.x = direction
+	var anim_name = get_walk_animation(enemy_type)
+	$AnimatedSprite2D.play(anim_name)
+
+	# 控制左右翻转
+	$AnimatedSprite2D.scale = Vector2(direction, 1.0)
+
+func get_walk_animation(enemy_type: String) -> String:
+	match enemy_type:
+		"small": return "walk_small"
+		"medium": return "walk_medium"
+		"big": return "walk_big"
+		_: return "walk"
+
+func get_death_animation(enemy_type: String) -> String:
+	match enemy_type:
+		"small": return "death_small"
+		"medium": return "death_medium"
+		"big": return "death_big"
+		_: return "death"
 
 func take_damage(amount: int = 1):
 	if is_dead:
 		return
 
 	health -= amount
-
 	if health <= 0:
 		die()
 
-
 func die():
 	is_dead = true
-	$AnimatedSprite2D.play("death")
-
-	# Optional: Add sound or particle effects here
+	$AnimatedSprite2D.play(get_death_animation(enemy_type))
 
 	if get_tree().current_scene.has_method("increment_score"):
 		get_tree().current_scene.increment_score()
@@ -44,35 +111,11 @@ func die():
 	await get_tree().create_timer(0.6).timeout
 	queue_free()
 
-
-#func _on_area_entered(area: Area2D) -> void:
-	#print("敌人检测到碰撞：", area.name, " 所属组 Tomato？", area.is_in_group("Tomato"))
-#
-	#if is_dead:
-		#return  # 防止多次触发
-#
-	#if area.is_in_group("Tomato"):
-		#is_dead = true
-		#area.queue_free()
-#
-		## 播放死亡动画
-		#$AnimatedSprite2D.play("death")
-		#
-		## 可选：播放音效、爆炸粒子
-		## $DeathSound.play()
-		## spawn_tomato_juice_effect()
-#
-		## 等待动画播完后销毁自己
-		#await $AnimatedSprite2D.animation_finished
-		#queue_free()
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Tomato") and not is_dead:
 		take_damage(1)
 		area.queue_free()
 
-
 func _on_body_entered(body: Node2D) -> void:
-	
 	if body is CharacterBody2D and not is_dead:
-		print("entered and player")
-		body.game_over()
+		body.take_damage()

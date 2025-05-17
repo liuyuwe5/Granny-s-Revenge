@@ -21,14 +21,18 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
 
-directories/dch_directory={}
+directories/dch_directory={
+"Lily": "res://Story/Lily.dch",
+"Mei": "res://Story/Mei.dch"
+}
 directories/dtl_directory={
 "final_scene_intro": "res://Story/final_scene_intro.dtl",
 "intro": "res://Story/intro.dtl",
 "leve_3": "res://Story/level_3.dtl",
 "level_1": "res://Story/level_1.dtl",
 "level_2": "res://Story/level_2.dtl",
-"level_4": "res://Story/level_4.dtl"
+"level_4": "res://Story/level_4.dtl",
+"lily_decision": "res://Story/lily_decision.dtl"
 }
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
@@ -66,7 +70,9 @@ audio/channel_defaults={
 glossary/default_case_sensitive=true
 layout/style_list=[]
 layout/default_style="Default"
-variables={}
+variables={
+"kill_lily": true
+}
 
 [display]
 

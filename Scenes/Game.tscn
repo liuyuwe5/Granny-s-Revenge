@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d3u2y7qj0enwo"]
+[gd_scene load_steps=20 format=3 uid="uid://d3u2y7qj0enwo"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_1qtte"]
 [ext_resource type="PackedScene" uid="uid://gl1iys3k3ywe" path="res://Scenes/Enemy.tscn" id="2_mhqi4"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c3md3515cy51c" path="res://Assets/Sprites/Environment/parallax-04.png" id="8_kudmt"]
 [ext_resource type="Shader" path="res://Shaders/Arrow.gdshader" id="11_klrqf"]
 [ext_resource type="Texture2D" uid="uid://cilb78t340xy3" path="res://Assets/Sprites/UI/arrow_isometric.png" id="11_ov2kw"]
+[ext_resource type="Script" path="res://Scripts/level_management.gd" id="14_p08o7"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_arhbn"]
 distance = 6.59044
@@ -62,6 +63,7 @@ scale = Vector2(2.014, 1.95552)
 texture = ExtResource("3_1bbd2")
 
 [node name="BackgroundMiddle" type="Sprite2D" parent="BackGround"]
+visible = false
 scale = Vector2(1.84566, 1.97609)
 texture = ExtResource("4_1spyg")
 
@@ -172,3 +174,7 @@ rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_fycsu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="LevelManager" type="Node" parent="."]
+script = ExtResource("14_p08o7")
+level_number = 2
