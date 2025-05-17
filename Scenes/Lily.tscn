@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://bypulil2a7lii"]
 
-[ext_resource type="Script" path="res://lily.gd" id="1_coblt"]
+[ext_resource type="Script" path="res://Scripts/lily.gd" id="1_coblt"]
 [ext_resource type="Texture2D" uid="uid://bdtm1u5vyvil4" path="res://Assets/Sprites/Enemies/小丽death.png" id="2_6gdyj"]
 [ext_resource type="Texture2D" uid="uid://dysxyu2gdbiht" path="res://Assets/Sprites/Enemies/小丽idle.png" id="2_g1kp7"]
 

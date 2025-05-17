@@ -1,0 +1,22 @@
+Lily: "Don’t you think you’re being childish?\
+Still clinging to those childhood fantasies."
+Lily: "So what if you kill me?\
+Will your life get any better?"
+Lily: "This so-called ‘socialism’...\
+only makes people lazy,\
+always waiting for handouts from others."
+Mei: "Is that... the excuse you tell yourself?"
+Kill Lily?
+- Yes
+	set {kill_lily} = true
+- No
+	set 
+	set 
+if {kill_lily} == false:
+	Mei: "I thought you actually… understood."
+	Lily: "Even if you kill me...\
+	what will it change?\
+	This massive capitalist machine—\
+	do you think a single bullet can make it stop?"
+elif {kill_lily} == true:
+	return
