@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://csypjl6kon27t"]
+[gd_scene load_steps=20 format=3 uid="uid://csypjl6kon27t"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_ucnw2"]
 [ext_resource type="PackedScene" uid="uid://gl1iys3k3ywe" path="res://Scenes/Enemy.tscn" id="2_pl3vl"]
@@ -8,8 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://d25g6nj4x4vnp" path="res://Assets/Sprites/Environment/modern_city_ground.png" id="6_6uikf"]
 [ext_resource type="PackedScene" uid="uid://bcmfox80hwm8a" path="res://Scenes/Player.tscn" id="7_v5coy"]
 [ext_resource type="Texture2D" uid="uid://cu0uonrxrk8l2" path="res://Assets/Sprites/Environment/parallax-00.png" id="8_3k1iu"]
-[ext_resource type="Texture2D" uid="uid://dhv2akpdjo3dc" path="res://Assets/Sprites/UI/pixel heart/1.png" id="8_p3qsj"]
-[ext_resource type="Texture2D" uid="uid://4ggcg6ol68y4" path="res://Assets/Sprites/UI/pixel heart/4.png" id="9_cdhwb"]
 [ext_resource type="Texture2D" uid="uid://c135ycpirm1vk" path="res://Assets/Sprites/Environment/parallax-01.png" id="9_ftupt"]
 [ext_resource type="Texture2D" uid="uid://b0tdctxgeaj" path="res://Assets/Sprites/Environment/parallax-03.png" id="10_llh0t"]
 [ext_resource type="Texture2D" uid="uid://c3md3515cy51c" path="res://Assets/Sprites/Environment/parallax-04.png" id="11_x7tu6"]
@@ -91,8 +89,6 @@ texture = ExtResource("6_6uikf")
 [node name="Player" parent="." instance=ExtResource("7_v5coy")]
 position = Vector2(0, 24)
 scale = Vector2(4, 4)
-full_heart_texture = ExtResource("8_p3qsj")
-empty_heart_texture = ExtResource("9_cdhwb")
 
 [node name="Boundary" type="Node2D" parent="."]
 metadata/_edit_lock_ = true

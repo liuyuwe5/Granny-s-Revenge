@@ -51,6 +51,7 @@ script = ExtResource("1_c0ajo")
 enemy_scene = ExtResource("2_jbi6h")
 spawn_timer = NodePath("Timer")
 score_label = NodePath("CanvasLayer/ScoreLabel")
+next_level_path = "res://Scenes/Win.tscn"
 player = NodePath("Player")
 arrow_hint = NodePath("ArrowHint")
 right_boundary = NodePath("Boundary/RightBoundary/CollisionShape2D")

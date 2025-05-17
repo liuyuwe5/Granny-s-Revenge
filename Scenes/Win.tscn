@@ -70,3 +70,19 @@ offset_top = -184.0
 offset_right = 319.0
 offset_bottom = 183.0
 color = Color(0, 0, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HeartContainer" type="HBoxContainer" parent="CanvasLayer"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Heart1" type="TextureRect" parent="CanvasLayer/HeartContainer"]
+layout_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="CanvasLayer/HeartContainer"]
+layout_mode = 2
+
+[node name="Heart3" type="TextureRect" parent="CanvasLayer/HeartContainer"]
+layout_mode = 2
