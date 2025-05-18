@@ -5,6 +5,7 @@ extends Node2D
 @export var max_health: int = 10
 var health: int = 10
 var is_dead := false
+var can_shoot := true
 @export var sentences: = [
 	"ALIGNMENT",
 	"STRATEGY DECK",
@@ -32,10 +33,14 @@ var is_dead := false
 	"LET'S TAKE THIS OFFLINE"
 ]
 func _ready():
-	$AnimatedSprite2D.play("idle")
-	$shoot_timer.wait_time = fire_rate
-	$shoot_timer.timeout.connect(shoot)
-	$shoot_timer.start()
+	if can_shoot: # add can_contrl here
+		$AnimatedSprite2D.play("idle")
+		$shoot_timer.wait_time = fire_rate
+		$shoot_timer.timeout.connect(shoot)
+		$shoot_timer.start()
+		
+		#print("can throw")
+	
 
 
 func shoot():

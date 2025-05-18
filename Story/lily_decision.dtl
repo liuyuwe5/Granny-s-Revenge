@@ -6,17 +6,34 @@ Lily: "This so-called ‘socialism’...\
 only makes people lazy,\
 always waiting for handouts from others."
 Mei: "Is that... the excuse you tell yourself?"
-Kill Lily?
-- Yes
-	set {kill_lily} = true
-- No
-	set 
-	set 
+if {kill_lily} == false:
+	Kill Lily?
+	- Yes
+		set {kill_lily} = true
+	- No
+		set {kill_lily} = false
+if {kill_lily} == false:
+	Lily:  "It’s not like I didn’t try.\
+	 I used to... help people.\
+	 I donated money to the poor."\
+	 "But what I saw—they just got lazier,\
+	 more dependent,\
+	 and nothing really changed."
+	Mei: "Your way of thinking...\
+	 That’s what’s truly naive."
+	Kill Lily?
+	- Yes
+		set {kill_lily} = true
+	- No
+		set {kill_lily} = false
 if {kill_lily} == false:
 	Mei: "I thought you actually… understood."
 	Lily: "Even if you kill me...\
 	what will it change?\
 	This massive capitalist machine—\
 	do you think a single bullet can make it stop?"
-elif {kill_lily} == true:
-	return
+	Kill Lily?
+	- Yes
+		set {kill_lily} = true
+	- No
+		set {kill_lily} = false

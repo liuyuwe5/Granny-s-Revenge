@@ -1,25 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5x1dn0lussto"]
+[gd_scene load_steps=9 format=3 uid="uid://bjmpvv2veagd4"]
 
-[ext_resource type="PackedScene" uid="uid://bcmfox80hwm8a" path="res://Scenes/Player.tscn" id="1_oumcd"]
-[ext_resource type="PackedScene" uid="uid://bypulil2a7lii" path="res://Scenes/Lily.tscn" id="2_l7y0i"]
-[ext_resource type="Script" path="res://Scripts/win.gd" id="2_u12yg"]
-[ext_resource type="Texture2D" uid="uid://bas2r64ou7jv8" path="res://Assets/Sprites/Environment/2d_metroidvania_serie_mockup_1_tileset.png" id="3_6qv8u"]
-[ext_resource type="Texture2D" uid="uid://cu0uonrxrk8l2" path="res://Assets/Sprites/Environment/parallax-00.png" id="4_wtjop"]
-[ext_resource type="Texture2D" uid="uid://c135ycpirm1vk" path="res://Assets/Sprites/Environment/parallax-01.png" id="5_awmf6"]
-[ext_resource type="Texture2D" uid="uid://b0tdctxgeaj" path="res://Assets/Sprites/Environment/parallax-03.png" id="6_2x4r6"]
-[ext_resource type="Texture2D" uid="uid://c3md3515cy51c" path="res://Assets/Sprites/Environment/parallax-04.png" id="7_x747m"]
+[ext_resource type="Script" path="res://Scripts/win.gd" id="1_rq58n"]
+[ext_resource type="PackedScene" uid="uid://bcmfox80hwm8a" path="res://Scenes/Player.tscn" id="2_hst4d"]
+[ext_resource type="Texture2D" uid="uid://bas2r64ou7jv8" path="res://Assets/Sprites/Environment/2d_metroidvania_serie_mockup_1_tileset.png" id="3_hpmih"]
+[ext_resource type="Texture2D" uid="uid://cu0uonrxrk8l2" path="res://Assets/Sprites/Environment/parallax-00.png" id="4_wkcge"]
+[ext_resource type="Texture2D" uid="uid://c135ycpirm1vk" path="res://Assets/Sprites/Environment/parallax-01.png" id="5_u8cig"]
+[ext_resource type="Texture2D" uid="uid://b0tdctxgeaj" path="res://Assets/Sprites/Environment/parallax-03.png" id="6_jrdfk"]
+[ext_resource type="Texture2D" uid="uid://c3md3515cy51c" path="res://Assets/Sprites/Environment/parallax-04.png" id="7_ci5ya"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_onrhe"]
 distance = 6.59044
 
 [node name="Win" type="Node2D"]
-script = ExtResource("2_u12yg")
-lily_scene = ExtResource("2_l7y0i")
+script = ExtResource("1_rq58n")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.84, 1.84)
 
-[node name="Player" parent="." instance=ExtResource("1_oumcd")]
+[node name="Player" parent="." instance=ExtResource("2_hst4d")]
 position = Vector2(-327, 57)
 scale = Vector2(4, 4)
 
@@ -30,7 +28,7 @@ position = Vector2(1.19209e-07, 132)
 scale = Vector2(-13.1459, 5.46246)
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground/TemperaryGround"]
-texture = ExtResource("3_6qv8u")
+texture = ExtResource("3_hpmih")
 region_enabled = true
 region_rect = Rect2(32, 80, 48, 16)
 
@@ -44,25 +42,25 @@ visible = false
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource("4_wtjop")
+texture = ExtResource("4_wkcge")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.2, 0.2)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-texture = ExtResource("5_awmf6")
+texture = ExtResource("5_u8cig")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.1, 0.1)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-texture = ExtResource("6_2x4r6")
+texture = ExtResource("6_jrdfk")
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.9, 0.9)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
-texture = ExtResource("7_x747m")
+texture = ExtResource("7_ci5ya")
 
 [node name="DialogTimer" type="Timer" parent="."]
 one_shot = true
