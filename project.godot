@@ -71,7 +71,7 @@ glossary/default_case_sensitive=true
 layout/style_list=[]
 layout/default_style="Default"
 variables={
-"kill_lily": true
+"kill_lily": false
 }
 
 [display]
