@@ -9,6 +9,11 @@ var timeline = []
 var current_index = 0
 var timer: Timer
 
+var timeline_total_time := 0.0
+var timeline_elapsed_time := 0.0
+var progress_bar_max := 95.0  # 初始最多推进到 95%
+
+
 
 func _ready():
 	match level_number:
@@ -21,18 +26,33 @@ func _ready():
 		_:
 			print("Unknown level, defaulting to Level 1")
 			setup_level_1()
+			
+
+	## Set up the spawn timer
+	#timer = Timer.new()
+	#timer.one_shot = true  #  ensure it's one-shot
+	#add_child(timer)
+	#timer.timeout.connect(_spawn_enemy)
+#
+	#_start_timeline()
+	# 计算总 timeline 时长
+	timeline_total_time = 0.0
+	for phase in timeline:
+		timeline_total_time += phase["end"] - phase["start"]
 
 	# Set up the spawn timer
 	timer = Timer.new()
-	timer.one_shot = true  #  ensure it's one-shot
+	timer.one_shot = true
 	add_child(timer)
 	timer.timeout.connect(_spawn_enemy)
 
+	# 启动 timeline 和进度条更新
 	_start_timeline()
+	_start_progress_bar()
 
 func setup_level_1():
 	timeline = [
-	{ "start": 0, "end": 1, "type": "continuous", "spawn_rate": Vector2(2, 4), "enemies": ["small"] },
+	{ "start": 0, "end": 5, "type": "continuous", "spawn_rate": Vector2(2, 4), "enemies": ["small"] },
 	#{ "start": 10, "end": 20, "type": "wave", "spawn_rate": Vector2(1, 2), "enemies": ["small"] },
 	#{ "start": 20, "end": 30, "type": "continuous", "spawn_rate": Vector2(2, 4), "enemies": ["small", "medium"] },
 	#{ "start": 30, "end": 40, "type": "wave", "spawn_rate": Vector2(1, 2), "enemies": ["small", "medium"] },
@@ -43,7 +63,7 @@ func setup_level_1():
 
 func setup_level_2():
 	timeline = [
-		{ "start": 0, "end": 15, "type": "continuous", "spawn_rate": Vector2(1, 5), "enemies": ["small"] },
+		{ "start": 0, "end": 5, "type": "continuous", "spawn_rate": Vector2(1, 5), "enemies": ["small"] },
 #
 		#{ "start": 15, "end": 30, "type": "continuous", "spawn_rate": Vector2(0, 2), "enemies": ["small", "medium"] },
 		#{ "start": 30, "end": 45, "type": "wave", "spawn_rate": Vector2(0, 2), "enemies": ["medium"] },
@@ -62,7 +82,7 @@ func setup_level_2():
 
 func setup_level_3():
 	timeline = [
-		{ "start": 0, "end": 1, "type": "continuous", "spawn_rate": Vector2(0.8, 3), "enemies": ["small"] },
+		{ "start": 0, "end": 5, "type": "continuous", "spawn_rate": Vector2(0.8, 3), "enemies": ["small"] },
 		#{ "start": 10, "end": 25, "type": "wave", "spawn_rate": Vector2(0.3, 1.5), "enemies": ["small", "medium"] },
 		#{ "start": 25, "end": 40, "type": "continuous", "spawn_rate": Vector2(0.6, 2.5), "enemies": ["small", "medium"] },
 		#{ "start": 40, "end": 60, "type": "wave", "spawn_rate": Vector2(0.2, 1.2), "enemies": ["medium"] },
@@ -72,22 +92,49 @@ func setup_level_3():
 	]
 
 
+#func _start_timeline():
+	#print(current_index)
+	#if current_index >= timeline.size():
+		#print("Timeline complete!")
+		#timer.stop()
+		#return
+#
+	#var phase = timeline[current_index]
+	#var duration = phase["end"] - phase["start"]
+#
+	#print("Starting phase ", current_index, " (", phase, ")")
+#
+	## Start spawning
+	#_schedule_next_spawn(phase)
+#
+	## Move to the next phase after 'duration'
+	#await get_tree().create_timer(duration).timeout
+	#current_index += 1
+	#_start_timeline()
 func _start_timeline():
-	print(current_index)
 	if current_index >= timeline.size():
 		print("Timeline complete!")
 		timer.stop()
+		if active_enemies.is_empty():
+			print("✅ No enemies ever spawned. Ending level directly.")
+			
+			var bar = get_tree().current_scene.get_node("CanvasLayer/ProgressBar")
+			if bar:
+				bar.value = 100.0  # 推到 100%
+
+			await get_tree().create_timer(2.0).timeout
+			get_tree().current_scene.level_complete()
+			
 		return
 
 	var phase = timeline[current_index]
 	var duration = phase["end"] - phase["start"]
-
 	print("Starting phase ", current_index, " (", phase, ")")
 
 	# Start spawning
 	_schedule_next_spawn(phase)
 
-	# Move to the next phase after 'duration'
+	# Wait for this phase to finish
 	await get_tree().create_timer(duration).timeout
 	current_index += 1
 	_start_timeline()
@@ -174,14 +221,30 @@ func _spawn_enemy():
 
 	var spawn_position: Vector2
 	if from_left:
+		print("spawn left")
 		spawn_position = Vector2(-spawn_distance, spawn_y)
 	else:
-		spawn_position = Vector2(screen_width + spawn_distance, spawn_y)
+		spawn_position = Vector2(spawn_distance, spawn_y)
+		print("spawn right")
 
 	enemy.global_position = spawn_position
 	game.add_child(enemy)
 	_schedule_next_spawn(phase)
 
+
+func _start_progress_bar():
+	var bar = get_tree().current_scene.get_node("CanvasLayer/ProgressBar")
+	if not bar:
+		print("⚠️ Progress bar not found")
+		return
+
+	while timeline_elapsed_time < timeline_total_time:
+		await get_tree().process_frame
+		timeline_elapsed_time += get_process_delta_time()
+
+		var ratio = timeline_elapsed_time / timeline_total_time
+		bar.value = clamp(ratio * progress_bar_max, 0, progress_bar_max)
+		
 func _on_enemy_died():
 	# 有敌人 queue_free() 后就会触发这个
 	await get_tree().process_frame
@@ -189,4 +252,11 @@ func _on_enemy_died():
 
 	if current_index >= timeline.size() and active_enemies.is_empty():
 		print("✅ All enemies defeated, moving to next level!")
+		
+		
+		var bar = get_tree().current_scene.get_node("CanvasLayer/ProgressBar")
+		if bar:
+			bar.value = 100.0  # 推到 100%
+
+		await get_tree().create_timer(2.0).timeout
 		get_tree().current_scene.level_complete()

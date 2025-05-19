@@ -19,9 +19,6 @@ var level_manager: Node
 
 
 func _ready():
-	
-	#spawn_timer.timeout.connect(_on_spawn_timer_timeout)
-	#spawn_timer.start()
 
 	level_manager = $LevelManager  # 假设你有 LevelManager 节点
 
@@ -56,6 +53,4 @@ func _on_spawn_timer_timeout():
 		var screen_width = get_viewport_rect().size.x
 		enemy.global_position = Vector2(screen_width + spawn_distance, spawn_y)
 		enemy.direction = -1
-#func show_game_over():
-	#game_over_label.visible = true
-	
+		
