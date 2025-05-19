@@ -8,13 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://d25g6nj4x4vnp" path="res://Assets/Sprites/Environment/modern_city_ground.png" id="6_hv7cx"]
 [ext_resource type="PackedScene" uid="uid://bcmfox80hwm8a" path="res://Scenes/Player.tscn" id="7_lkr8f"]
 [ext_resource type="Texture2D" uid="uid://cu0uonrxrk8l2" path="res://Assets/Sprites/Environment/parallax-00.png" id="8_cgoh2"]
-[ext_resource type="Texture2D" uid="uid://dhv2akpdjo3dc" path="res://Assets/Sprites/UI/pixel heart/1.png" id="8_dlt1s"]
 [ext_resource type="Texture2D" uid="uid://c135ycpirm1vk" path="res://Assets/Sprites/Environment/parallax-01.png" id="9_ghnqc"]
-[ext_resource type="Texture2D" uid="uid://4ggcg6ol68y4" path="res://Assets/Sprites/UI/pixel heart/4.png" id="9_qt166"]
 [ext_resource type="Texture2D" uid="uid://b0tdctxgeaj" path="res://Assets/Sprites/Environment/parallax-03.png" id="10_rss6r"]
 [ext_resource type="Texture2D" uid="uid://c3md3515cy51c" path="res://Assets/Sprites/Environment/parallax-04.png" id="11_8ca8w"]
 [ext_resource type="Shader" path="res://Shaders/Arrow.gdshader" id="12_f04hg"]
+[ext_resource type="Texture2D" uid="uid://c6eci4bs3m0nh" path="res://Assets/Sprites/UI/horizontal bars/medium rounded/progress bar medium rounded over.png" id="12_lqkmq"]
 [ext_resource type="Texture2D" uid="uid://cilb78t340xy3" path="res://Assets/Sprites/UI/arrow_isometric.png" id="13_i3v1a"]
+[ext_resource type="Texture2D" uid="uid://cupmekw7ssoix" path="res://Assets/Sprites/UI/horizontal bars/medium rounded/progress bar medium rounded progress green.png" id="13_yr1uu"]
 [ext_resource type="Script" path="res://Scripts/level_management.gd" id="14_crrgc"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_arhbn"]
@@ -90,8 +90,6 @@ texture = ExtResource("6_hv7cx")
 [node name="Player" parent="." instance=ExtResource("7_lkr8f")]
 position = Vector2(0, 24)
 scale = Vector2(4, 4)
-full_heart_texture = ExtResource("8_dlt1s")
-empty_heart_texture = ExtResource("9_qt166")
 
 [node name="Boundary" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -181,6 +179,16 @@ visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 metadata/_edit_use_anchors_ = true
+
+[node name="ProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
+offset_left = 432.0
+offset_top = 24.0
+offset_right = 472.0
+offset_bottom = 64.0
+scale = Vector2(8.91409, 0.955203)
+nine_patch_stretch = true
+texture_under = ExtResource("12_lqkmq")
+texture_progress = ExtResource("13_yr1uu")
 
 [node name="ArrowHint" type="AnimatedSprite2D" parent="."]
 visible = false

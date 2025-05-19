@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://csypjl6kon27t"]
+[gd_scene load_steps=22 format=3 uid="uid://csypjl6kon27t"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_ucnw2"]
 [ext_resource type="PackedScene" uid="uid://gl1iys3k3ywe" path="res://Scenes/Enemy.tscn" id="2_pl3vl"]
@@ -11,7 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://c135ycpirm1vk" path="res://Assets/Sprites/Environment/parallax-01.png" id="9_ftupt"]
 [ext_resource type="Texture2D" uid="uid://b0tdctxgeaj" path="res://Assets/Sprites/Environment/parallax-03.png" id="10_llh0t"]
 [ext_resource type="Texture2D" uid="uid://c3md3515cy51c" path="res://Assets/Sprites/Environment/parallax-04.png" id="11_x7tu6"]
+[ext_resource type="Texture2D" uid="uid://c6eci4bs3m0nh" path="res://Assets/Sprites/UI/horizontal bars/medium rounded/progress bar medium rounded over.png" id="12_15i1q"]
 [ext_resource type="Shader" path="res://Shaders/Arrow.gdshader" id="12_rcawx"]
+[ext_resource type="Texture2D" uid="uid://cupmekw7ssoix" path="res://Assets/Sprites/UI/horizontal bars/medium rounded/progress bar medium rounded progress green.png" id="13_1761f"]
 [ext_resource type="Texture2D" uid="uid://cilb78t340xy3" path="res://Assets/Sprites/UI/arrow_isometric.png" id="13_a8gbo"]
 [ext_resource type="Script" path="res://Scripts/level_management.gd" id="14_noc82"]
 
@@ -178,6 +180,16 @@ visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 metadata/_edit_use_anchors_ = true
+
+[node name="ProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
+offset_left = 432.0
+offset_top = 24.0
+offset_right = 472.0
+offset_bottom = 64.0
+scale = Vector2(8.91409, 0.955203)
+nine_patch_stretch = true
+texture_under = ExtResource("12_15i1q")
+texture_progress = ExtResource("13_1761f")
 
 [node name="ArrowHint" type="AnimatedSprite2D" parent="."]
 visible = false
