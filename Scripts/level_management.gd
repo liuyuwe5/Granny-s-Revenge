@@ -13,7 +13,8 @@ var timeline_total_time := 0.0
 var timeline_elapsed_time := 0.0
 var progress_bar_max := 95.0  # 初始最多推进到 95%
 
-
+var kills_since_last_special := 0
+@export var kills_needed_for_special := 5  # 冷却门槛
 
 func _ready():
 	match level_number:
@@ -53,10 +54,10 @@ func _ready():
 func setup_level_1():
 	timeline = [
 	{ "start": 0, "end": 5, "type": "continuous", "spawn_rate": Vector2(2, 4), "enemies": ["small"] },
-	#{ "start": 10, "end": 20, "type": "wave", "spawn_rate": Vector2(1, 2), "enemies": ["small"] },
-	#{ "start": 20, "end": 30, "type": "continuous", "spawn_rate": Vector2(2, 4), "enemies": ["small", "medium"] },
-	#{ "start": 30, "end": 40, "type": "wave", "spawn_rate": Vector2(1, 2), "enemies": ["small", "medium"] },
-	#{ "start": 40, "end": 50, "type": "continuous", "spawn_rate": Vector2(2, 3), "enemies": ["medium"] }
+	{ "start": 10, "end": 20, "type": "wave", "spawn_rate": Vector2(1, 2), "enemies": ["small"] },
+	{ "start": 20, "end": 30, "type": "continuous", "spawn_rate": Vector2(2, 4), "enemies": ["small", "medium"] },
+	{ "start": 30, "end": 40, "type": "wave", "spawn_rate": Vector2(1, 2), "enemies": ["small", "medium"] },
+	{ "start": 40, "end": 50, "type": "continuous", "spawn_rate": Vector2(2, 3), "enemies": ["medium"] }
 ]
 
 
@@ -245,11 +246,24 @@ func _start_progress_bar():
 		var ratio = timeline_elapsed_time / timeline_total_time
 		bar.value = clamp(ratio * progress_bar_max, 0, progress_bar_max)
 		
+func _process(delta):
+	if Input.is_action_just_pressed("special_attack") and kills_since_last_special >= kills_needed_for_special:
+		var player = game.get_node("Player")
+		if player:
+			trigger_special_attack(player.global_position)
+			kills_since_last_special = 0  
+
+		
 func _on_enemy_died():
+	if not is_inside_tree():
+		return
+		
 	# 有敌人 queue_free() 后就会触发这个
 	await get_tree().process_frame
 	active_enemies = active_enemies.filter(func(e): return e != null and e.is_inside_tree())
-
+	
+	kills_since_last_special += 1  
+	
 	if current_index >= timeline.size() and active_enemies.is_empty():
 		print("✅ All enemies defeated, moving to next level!")
 		
@@ -260,3 +274,22 @@ func _on_enemy_died():
 
 		await get_tree().create_timer(2.0).timeout
 		get_tree().current_scene.level_complete()
+		
+func trigger_special_attack(center_position: Vector2):
+	var enemies_with_distance := []
+
+	for enemy in active_enemies:
+		if enemy and enemy.is_inside_tree():
+			var dist = center_position.distance_to(enemy.global_position)
+			enemies_with_distance.append({ "enemy": enemy, "distance": dist })
+
+	# 按距离排序
+	enemies_with_distance.sort_custom(func(a, b): return a["distance"] < b["distance"])
+
+	# 对最近的五个敌人 -1 HP
+	for i in range(min(5, enemies_with_distance.size())):
+		var target = enemies_with_distance[i]["enemy"]
+		if target.has_method("take_damage"):
+			target.take_damage(1)
+			
+	
