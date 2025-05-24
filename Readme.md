@@ -51,6 +51,10 @@
 - player.tscn添加动画：idle，walk，dead
 
 ---
+
+## 🛠️ 2025-05-24 Update (战斗场景)
+- 添加战斗方式：每杀5个敌人可以放一次大招，对最近的五个敌人 -1 HP。
+
 ## 🛠️ 2025-05-11 Update (战斗场景)
 -多样化的敌人难度，不同的生命值和行走速度 ("Scripts/level_management.gd“， "Scripts/enemy.gd“)
 -不同level的敌人出场频率优化
