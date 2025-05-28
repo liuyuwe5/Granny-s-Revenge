@@ -88,6 +88,7 @@ func take_damage():
 	update_hearts_ui()
 
 	if current_hearts <= 0:
+		
 		game_over()
 
 func update_hearts_ui():

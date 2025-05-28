@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://c5ylavsb2jwwq"]
+
+[ext_resource type="Script" path="res://Scripts/tomato_buff.gd" id="1_77nym"]
+[ext_resource type="Texture2D" uid="uid://dtnrmkly532p8" path="res://Assets/Sprites/Interactables/番茄.png" id="2_xv80o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne6xd"]
+atlas = ExtResource("2_xv80o")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0xm3"]
+atlas = ExtResource("2_xv80o")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0e5r"]
+atlas = ExtResource("2_xv80o")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4smrh"]
+atlas = ExtResource("2_xv80o")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bu7em"]
+atlas = ExtResource("2_xv80o")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4f218"]
+atlas = ExtResource("2_xv80o")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_be7s1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne6xd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0xm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0e5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4smrh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bu7em")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4f218")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ura2"]
+radius = 5.33333
+
+[node name="Area2D" type="Area2D" groups=["Tomato"]]
+script = ExtResource("1_77nym")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_be7s1")
+animation = &"explosion"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_6ura2")

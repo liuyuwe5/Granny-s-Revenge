@@ -66,10 +66,10 @@ func setup_level_2():
 	timeline = [
 		{ "start": 0, "end": 5, "type": "continuous", "spawn_rate": Vector2(1, 5), "enemies": ["small"] },
 #
-		#{ "start": 15, "end": 30, "type": "continuous", "spawn_rate": Vector2(0, 2), "enemies": ["small", "medium"] },
-		#{ "start": 30, "end": 45, "type": "wave", "spawn_rate": Vector2(0, 2), "enemies": ["medium"] },
-		#{ "start": 45, "end": 60, "type": "continuous", "spawn_rate": Vector2(0, 2), "enemies": ["small", "medium", "big"] },
-		#{ "start": 60, "end": 80, "type": "continuous", "spawn_rate": Vector2(0, 2), "enemies": ["small", "medium", "big"] },
+		{ "start": 15, "end": 30, "type": "continuous", "spawn_rate": Vector2(0, 2), "enemies": ["small", "medium"] },
+		{ "start": 30, "end": 45, "type": "wave", "spawn_rate": Vector2(0, 2), "enemies": ["medium"] },
+		{ "start": 45, "end": 60, "type": "continuous", "spawn_rate": Vector2(0, 2), "enemies": ["small", "medium", "big"] },
+		{ "start": 60, "end": 70, "type": "continuous", "spawn_rate": Vector2(0, 2), "enemies": ["small", "medium", "big"] },
 		#
 		#{ "start": 0, "end": 15, "type": "continuous", "spawn_rate": Vector2(1, 5), "enemies": ["small"] },
 		#{ "start": 15, "end": 30, "type": "wave", "spawn_rate": Vector2(0, 2), "enemies": ["small"] },
@@ -84,12 +84,12 @@ func setup_level_2():
 func setup_level_3():
 	timeline = [
 		{ "start": 0, "end": 5, "type": "continuous", "spawn_rate": Vector2(0.8, 3), "enemies": ["small"] },
-		#{ "start": 10, "end": 25, "type": "wave", "spawn_rate": Vector2(0.3, 1.5), "enemies": ["small", "medium"] },
-		#{ "start": 25, "end": 40, "type": "continuous", "spawn_rate": Vector2(0.6, 2.5), "enemies": ["small", "medium"] },
-		#{ "start": 40, "end": 60, "type": "wave", "spawn_rate": Vector2(0.2, 1.2), "enemies": ["medium"] },
-		#{ "start": 60, "end": 85, "type": "continuous", "spawn_rate": Vector2(0.8, 2.5), "enemies": ["small", "medium", "big"] },
-		#{ "start": 85, "end": 110, "type": "wave", "spawn_rate": Vector2(0.1, 1), "enemies": ["medium", "big"] },
-		#{ "start": 110, "end": 125, "type": "continuous", "spawn_rate": Vector2(0.5, 2), "enemies": ["small", "medium", "big"] },
+		{ "start": 10, "end": 25, "type": "wave", "spawn_rate": Vector2(0.3, 1.5), "enemies": ["small", "medium"] },
+		{ "start": 25, "end": 40, "type": "continuous", "spawn_rate": Vector2(0.6, 2.5), "enemies": ["small", "medium"] },
+		{ "start": 40, "end": 60, "type": "wave", "spawn_rate": Vector2(0.2, 1.2), "enemies": ["medium"] },
+		{ "start": 60, "end": 85, "type": "continuous", "spawn_rate": Vector2(0.8, 2.5), "enemies": ["small", "medium", "big"] },
+		{ "start": 85, "end": 110, "type": "wave", "spawn_rate": Vector2(0.1, 1), "enemies": ["medium", "big"] },
+		{ "start": 110, "end": 125, "type": "continuous", "spawn_rate": Vector2(0.5, 2), "enemies": ["small", "medium", "big"] },
 	]
 
 
@@ -184,26 +184,26 @@ func _spawn_enemy():
 	# 设置敌人属性
 	match enemy_type:
 		"small":
-			if level_number == 2:
-				base_health = 3
-				base_speed = 40
-			else:
-				base_health = 1
-				base_speed = 50
+			#if level_number == 2:
+				#base_health = 3
+				#base_speed = 40
+			#else:
+			base_health = 1
+			base_speed = 50
 		"medium":
-			if level_number == 3:
-				base_health = 5
-			else:
-				base_health = 3
+			#if level_number == 3:
+				#base_health = 5
+			#else:
+			base_health = 2
 			base_speed = 40
 		"big":
-			if level_number == 3:
-				base_health = 7
-			else:
-				base_health = 5
+			#if level_number == 3:
+				#base_health = 7
+			#else:
+			base_health = 3
 			base_speed = 30
 			
-	var from_left = choose_spawn_side(0.8, allow_right_side)
+	var from_left = choose_spawn_side(0.6, allow_right_side)
 			
 	var direction = 1
 	if not from_left:
@@ -218,6 +218,9 @@ func _spawn_enemy():
 	# 设置位置
 	var spawn_distance = game.spawn_distance
 	var spawn_y = game.spawn_y
+	if enemy_type == "big":
+		spawn_y = game.spawn_y - 5
+		
 	var screen_width = game.get_viewport_rect().size.x
 
 	var spawn_position: Vector2
@@ -247,11 +250,14 @@ func _start_progress_bar():
 		bar.value = clamp(ratio * progress_bar_max, 0, progress_bar_max)
 		
 func _process(delta):
+	if kills_since_last_special >= kills_needed_for_special:
+		get_tree().current_scene.can_use_special = true
 	if Input.is_action_just_pressed("special_attack") and kills_since_last_special >= kills_needed_for_special:
 		var player = game.get_node("Player")
 		if player:
 			trigger_special_attack(player.global_position)
 			kills_since_last_special = 0  
+			get_tree().current_scene.can_use_special = false
 
 		
 func _on_enemy_died():
@@ -275,6 +281,23 @@ func _on_enemy_died():
 		await get_tree().create_timer(2.0).timeout
 		get_tree().current_scene.level_complete()
 		
+#func trigger_special_attack(center_position: Vector2):
+	#var enemies_with_distance := []
+#
+	#for enemy in active_enemies:
+		#if enemy and enemy.is_inside_tree():
+			#var dist = center_position.distance_to(enemy.global_position)
+			#enemies_with_distance.append({ "enemy": enemy, "distance": dist })
+#
+	## 按距离排序
+	#enemies_with_distance.sort_custom(func(a, b): return a["distance"] < b["distance"])
+#
+	## 对最近的五个敌人 -1 HP
+	#for i in range(min(5, enemies_with_distance.size())):
+		#var target = enemies_with_distance[i]["enemy"]
+		#if target.has_method("take_damage"):
+			#target.take_damage(1)
+			
 func trigger_special_attack(center_position: Vector2):
 	var enemies_with_distance := []
 
@@ -283,13 +306,15 @@ func trigger_special_attack(center_position: Vector2):
 			var dist = center_position.distance_to(enemy.global_position)
 			enemies_with_distance.append({ "enemy": enemy, "distance": dist })
 
-	# 按距离排序
+	# 排序
 	enemies_with_distance.sort_custom(func(a, b): return a["distance"] < b["distance"])
 
-	# 对最近的五个敌人 -1 HP
+	# 发射五个番茄
+	var tomato_scene = preload("res://Scenes/TomatoBuff.tscn")
 	for i in range(min(5, enemies_with_distance.size())):
 		var target = enemies_with_distance[i]["enemy"]
-		if target.has_method("take_damage"):
-			target.take_damage(1)
-			
-	
+		assert(target is Node2D)
+		var tomato = tomato_scene.instantiate()
+		tomato.global_position = center_position
+		tomato.target = target
+		add_child(tomato)

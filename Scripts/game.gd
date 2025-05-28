@@ -15,7 +15,7 @@ var transition_trigger_x := 335
 var transitioned := false
 var level_manager: Node
 
-
+var can_use_special := false
 
 
 func _ready():
@@ -38,6 +38,12 @@ func _process(delta: float) -> void:
 		arrow_hint.visible = true
 		arrow_hint.modulate.a = 0.5
 		right_boundary.disabled = true
+	if can_use_special:
+		$CanvasLayer/SpecialHint.visible = true
+		#$CanvasLayer/SpecialHint.text = "Press [Space] to launch a special tomato attack!"
+	else:
+		$CanvasLayer/SpecialHint.visible = false
+
 		
 	
 func _on_spawn_timer_timeout():

@@ -67,6 +67,16 @@ func configure(_speed: float, _health: int, _direction: int, _type: String):
 	direction = _direction
 	enemy_type = _type
 
+func update_size_by_type():
+	if enemy_type == "big":
+		print("update to big")
+		$AnimatedSprite2D.scale = Vector2(direction * 0.5, 0.5)
+		$CollisionShape2D.shape = $CollisionShape2D.shape.duplicate()
+		var shape = $CollisionShape2D.shape as CapsuleShape2D
+		shape.radius = 40
+		shape.height = 90
+
+
 func _process(delta):
 	if is_dead:
 		return
@@ -77,7 +87,10 @@ func _process(delta):
 	$AnimatedSprite2D.play(anim_name)
 
 	# 控制左右翻转
+	
 	$AnimatedSprite2D.scale = Vector2(direction, 1.0)
+	if enemy_type == "big":
+		update_size_by_type()
 
 func get_walk_animation(enemy_type: String) -> String:
 	match enemy_type:

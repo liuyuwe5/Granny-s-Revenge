@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dnudcwrj3bj5i"]
+[gd_scene load_steps=18 format=3 uid="uid://dnudcwrj3bj5i"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_4u8c6"]
 [ext_resource type="PackedScene" uid="uid://gl1iys3k3ywe" path="res://Scenes/Enemy.tscn" id="2_68fcd"]
@@ -7,10 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://618vgyurxgip" path="res://Assets/Sprites/Environment/摩登城市.png" id="5_3htm5"]
 [ext_resource type="Texture2D" uid="uid://d25g6nj4x4vnp" path="res://Assets/Sprites/Environment/modern_city_ground.png" id="6_hv7cx"]
 [ext_resource type="PackedScene" uid="uid://bcmfox80hwm8a" path="res://Scenes/Player.tscn" id="7_lkr8f"]
-[ext_resource type="Texture2D" uid="uid://cu0uonrxrk8l2" path="res://Assets/Sprites/Environment/parallax-00.png" id="8_cgoh2"]
-[ext_resource type="Texture2D" uid="uid://c135ycpirm1vk" path="res://Assets/Sprites/Environment/parallax-01.png" id="9_ghnqc"]
-[ext_resource type="Texture2D" uid="uid://b0tdctxgeaj" path="res://Assets/Sprites/Environment/parallax-03.png" id="10_rss6r"]
-[ext_resource type="Texture2D" uid="uid://c3md3515cy51c" path="res://Assets/Sprites/Environment/parallax-04.png" id="11_8ca8w"]
 [ext_resource type="Shader" path="res://Shaders/Arrow.gdshader" id="12_f04hg"]
 [ext_resource type="Texture2D" uid="uid://c6eci4bs3m0nh" path="res://Assets/Sprites/UI/horizontal bars/medium rounded/progress bar medium rounded over.png" id="12_lqkmq"]
 [ext_resource type="Texture2D" uid="uid://cilb78t340xy3" path="res://Assets/Sprites/UI/arrow_isometric.png" id="13_i3v1a"]
@@ -124,32 +120,6 @@ shape = SubResource("WorldBoundaryShape2D_n73e6")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-visible = false
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource("8_cgoh2")
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.2, 0.2)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-texture = ExtResource("9_ghnqc")
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.1, 0.1)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-texture = ExtResource("10_rss6r")
-
-[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.9, 0.9)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
-texture = ExtResource("11_8ca8w")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
