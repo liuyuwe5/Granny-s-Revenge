@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://csypjl6kon27t"]
+[gd_scene load_steps=19 format=3 uid="uid://csypjl6kon27t"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_ucnw2"]
 [ext_resource type="PackedScene" uid="uid://gl1iys3k3ywe" path="res://Scenes/Enemy.tscn" id="2_pl3vl"]
@@ -7,10 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://618vgyurxgip" path="res://Assets/Sprites/Environment/摩登城市.png" id="5_nh4dk"]
 [ext_resource type="Texture2D" uid="uid://d25g6nj4x4vnp" path="res://Assets/Sprites/Environment/modern_city_ground.png" id="6_6uikf"]
 [ext_resource type="PackedScene" uid="uid://bcmfox80hwm8a" path="res://Scenes/Player.tscn" id="7_v5coy"]
-[ext_resource type="Texture2D" uid="uid://cu0uonrxrk8l2" path="res://Assets/Sprites/Environment/parallax-00.png" id="8_3k1iu"]
-[ext_resource type="Texture2D" uid="uid://c135ycpirm1vk" path="res://Assets/Sprites/Environment/parallax-01.png" id="9_ftupt"]
-[ext_resource type="Texture2D" uid="uid://b0tdctxgeaj" path="res://Assets/Sprites/Environment/parallax-03.png" id="10_llh0t"]
-[ext_resource type="Texture2D" uid="uid://c3md3515cy51c" path="res://Assets/Sprites/Environment/parallax-04.png" id="11_x7tu6"]
+[ext_resource type="FontFile" uid="uid://brkwwwbqh7f18" path="res://Assets/font/Uranus_Pixel_11Px.ttf" id="10_im2i3"]
 [ext_resource type="Texture2D" uid="uid://c6eci4bs3m0nh" path="res://Assets/Sprites/UI/horizontal bars/medium rounded/progress bar medium rounded over.png" id="12_15i1q"]
 [ext_resource type="Shader" path="res://Shaders/Arrow.gdshader" id="12_rcawx"]
 [ext_resource type="Texture2D" uid="uid://cupmekw7ssoix" path="res://Assets/Sprites/UI/horizontal bars/medium rounded/progress bar medium rounded progress green.png" id="13_1761f"]
@@ -126,32 +123,6 @@ shape = SubResource("WorldBoundaryShape2D_n73e6")
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-visible = false
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource("8_3k1iu")
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.2, 0.2)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-texture = ExtResource("9_ftupt")
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.1, 0.1)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-texture = ExtResource("10_llh0t")
-
-[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.9, 0.9)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
-texture = ExtResource("11_x7tu6")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HeartContainer" type="HBoxContainer" parent="CanvasLayer"]
@@ -191,6 +162,16 @@ nine_patch_stretch = true
 texture_under = ExtResource("12_15i1q")
 texture_progress = ExtResource("13_1761f")
 
+[node name="SpecialHint" type="Label" parent="CanvasLayer"]
+offset_left = 216.0
+offset_top = 88.0
+offset_right = 1013.0
+offset_bottom = 128.0
+theme_override_colors/font_color = Color(0.86, 0.86, 0.86, 1)
+theme_override_fonts/font = ExtResource("10_im2i3")
+theme_override_font_sizes/font_size = 40
+text = "Press [Space] to launch a special tomato attack!"
+
 [node name="ArrowHint" type="AnimatedSprite2D" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0.470588)
@@ -204,4 +185,4 @@ sprite_frames = SubResource("SpriteFrames_fycsu")
 
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("14_noc82")
-level_number = 2
+level_number = 3
