@@ -5,12 +5,13 @@ extends Node2D
 @onready var black_overlay := $BlackOverlay
 var walk_target_x := 0  # 主角要走到的位置
 var walk_speed := 100
-#@onready var character_placeholder := $CharacterPlaceholder  # 你要加角色的位置（比如一个 Node2D 占位符）
-#@export var character_scene: PackedScene  # 在 Inspector 中拖进角色场景
 var character_instance: Node = null
 @export var lily_scene: PackedScene
 var lily_instance: Node2D = null
+var end_triggered := true
 
+@export var screen_right_limit := 370
+@export var screen_left_limit := -370
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var lily_dead = Dialogic.VAR.get_variable("kill_lily")
@@ -45,15 +46,10 @@ func _ready():
 	dialog_timer.start(1.6)
 	dialog_timer.timeout.connect(_on_dialog_timer_timeout)
 	Dialogic.timeline_ended.connect(_on_dialog_ended)
+	end_triggered = false
 	
-#func walk_to_position(target_x: float) -> void:
-	#while player.position.x < target_x:
-		#player.velocity.x = walk_speed
-		#player.animator.play("walk")
-		#player.move_and_slide()
-		#await get_tree().create_timer(0.01).timeout
-#
-	#player.velocity = Vector2.ZERO
+	
+
 	
 func walk_to_position(target_x: float) -> void:
 	var direction = sign(target_x - player.position.x)
@@ -83,4 +79,36 @@ func _on_dialog_ended():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	if not end_triggered and (player.position.x < screen_left_limit or player.position.x > screen_right_limit):
+		end_triggered = true
+		await fade_out_and_end()
+		
+		
+func fade_out_and_end() -> void:
+	player.can_control = false
+	var tween = get_tree().create_tween()
+	tween.tween_property(black_overlay, "modulate:a", 1.0, 2.0)
+	await tween.finished
+
+	$EndCredits.visible = true
+
+
+	
+	await scroll_credits()
+	
+func scroll_credits():
+	var label = $EndCredits/CreditsLabel
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER  
+
+	
+	label.position.y = $EndCredits.size.y  # 从底部开始
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property(
+		label, "position:y",
+		-label.size.y-300,  # 滚到顶部
+		20.0  # 滚动持续时间
+	).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	
+	await tween.finished
+	get_tree().quit()  # 滚动完后退出或切换场景

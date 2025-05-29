@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://csypjl6kon27t"]
+[gd_scene load_steps=21 format=3 uid="uid://csypjl6kon27t"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_ucnw2"]
 [ext_resource type="PackedScene" uid="uid://gl1iys3k3ywe" path="res://Scenes/Enemy.tscn" id="2_pl3vl"]
@@ -12,7 +12,9 @@
 [ext_resource type="Shader" path="res://Shaders/Arrow.gdshader" id="12_rcawx"]
 [ext_resource type="Texture2D" uid="uid://cupmekw7ssoix" path="res://Assets/Sprites/UI/horizontal bars/medium rounded/progress bar medium rounded progress green.png" id="13_1761f"]
 [ext_resource type="Texture2D" uid="uid://cilb78t340xy3" path="res://Assets/Sprites/UI/arrow_isometric.png" id="13_a8gbo"]
+[ext_resource type="AudioStream" uid="uid://ckl71uq7oofyv" path="res://Assets/Audio/都市战斗.mp3" id="14_dvhyq"]
 [ext_resource type="Script" path="res://Scripts/level_management.gd" id="14_noc82"]
+[ext_resource type="AudioStream" uid="uid://du4nyn6iw3co1" path="res://Assets/Audio/获得buff.mp3" id="15_8u0fc"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_arhbn"]
 distance = 6.59044
@@ -163,11 +165,11 @@ texture_under = ExtResource("12_15i1q")
 texture_progress = ExtResource("13_1761f")
 
 [node name="SpecialHint" type="Label" parent="CanvasLayer"]
-offset_left = 216.0
-offset_top = 88.0
-offset_right = 1013.0
-offset_bottom = 128.0
-theme_override_colors/font_color = Color(0.86, 0.86, 0.86, 1)
+offset_left = 176.0
+offset_top = 280.0
+offset_right = 973.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("10_im2i3")
 theme_override_font_sizes/font_size = 40
 text = "Press [Space] to launch a special tomato attack!"
@@ -183,6 +185,14 @@ sprite_frames = SubResource("SpriteFrames_fycsu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
-[node name="LevelManager" type="Node" parent="."]
+[node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("special_hint_sound")]
 script = ExtResource("14_noc82")
 level_number = 3
+special_hint_sound = NodePath("../SpecialHintPlayer")
+
+[node name="BGMPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_dvhyq")
+autoplay = true
+
+[node name="SpecialHintPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_8u0fc")

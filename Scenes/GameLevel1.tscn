@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://de1gpvgnfqeh4"]
+[gd_scene load_steps=21 format=3 uid="uid://de1gpvgnfqeh4"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_km4wf"]
 [ext_resource type="PackedScene" uid="uid://gl1iys3k3ywe" path="res://Scenes/Enemy.tscn" id="2_8gwqn"]
@@ -7,11 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://618vgyurxgip" path="res://Assets/Sprites/Environment/摩登城市.png" id="5_dsvgh"]
 [ext_resource type="Texture2D" uid="uid://d25g6nj4x4vnp" path="res://Assets/Sprites/Environment/modern_city_ground.png" id="6_q515l"]
 [ext_resource type="PackedScene" uid="uid://bcmfox80hwm8a" path="res://Scenes/Player.tscn" id="7_7ubfe"]
+[ext_resource type="FontFile" uid="uid://brkwwwbqh7f18" path="res://Assets/font/Uranus_Pixel_11Px.ttf" id="10_a4uod"]
 [ext_resource type="Texture2D" uid="uid://c6eci4bs3m0nh" path="res://Assets/Sprites/UI/horizontal bars/medium rounded/progress bar medium rounded over.png" id="12_4unws"]
 [ext_resource type="Shader" path="res://Shaders/Arrow.gdshader" id="12_joytm"]
 [ext_resource type="Texture2D" uid="uid://cilb78t340xy3" path="res://Assets/Sprites/UI/arrow_isometric.png" id="13_clrn2"]
+[ext_resource type="AudioStream" uid="uid://ckl71uq7oofyv" path="res://Assets/Audio/都市战斗.mp3" id="13_u5bgd"]
 [ext_resource type="Texture2D" uid="uid://cupmekw7ssoix" path="res://Assets/Sprites/UI/horizontal bars/medium rounded/progress bar medium rounded progress green.png" id="13_wvydt"]
 [ext_resource type="Script" path="res://Scripts/level_management.gd" id="14_ada6g"]
+[ext_resource type="AudioStream" uid="uid://du4nyn6iw3co1" path="res://Assets/Audio/获得buff.mp3" id="15_rby2q"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_arhbn"]
 distance = 6.59044
@@ -160,6 +163,16 @@ nine_patch_stretch = true
 texture_under = ExtResource("12_4unws")
 texture_progress = ExtResource("13_wvydt")
 
+[node name="SpecialHint" type="Label" parent="CanvasLayer"]
+offset_left = 176.0
+offset_top = 280.0
+offset_right = 973.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("10_a4uod")
+theme_override_font_sizes/font_size = 40
+text = "Press [Space] to launch a special tomato attack!"
+
 [node name="ArrowHint" type="AnimatedSprite2D" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0.470588)
@@ -171,5 +184,13 @@ sprite_frames = SubResource("SpriteFrames_fycsu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
-[node name="LevelManager" type="Node" parent="."]
+[node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("special_hint_sound")]
 script = ExtResource("14_ada6g")
+special_hint_sound = NodePath("../SpecialHintPlayer")
+
+[node name="BGMPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_u5bgd")
+autoplay = true
+
+[node name="SpecialHintPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_rby2q")
