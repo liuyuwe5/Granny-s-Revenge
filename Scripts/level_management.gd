@@ -15,6 +15,7 @@ var progress_bar_max := 95.0  # 初始最多推进到 95%
 
 var kills_since_last_special := 0
 @export var kills_needed_for_special := 5  # 冷却门槛
+@export var special_hint_sound: AudioStreamPlayer2D
 
 func _ready():
 	match level_number:
@@ -83,7 +84,7 @@ func setup_level_2():
 
 func setup_level_3():
 	timeline = [
-		{ "start": 0, "end": 5, "type": "continuous", "spawn_rate": Vector2(0.8, 3), "enemies": ["small"] },
+		{ "start": 0, "end": 5, "type": "continuous", "spawn_rate": Vector2(0.8, 3), "enemies": ["big"] },
 		{ "start": 10, "end": 25, "type": "wave", "spawn_rate": Vector2(0.3, 1.5), "enemies": ["small", "medium"] },
 		{ "start": 25, "end": 40, "type": "continuous", "spawn_rate": Vector2(0.6, 2.5), "enemies": ["small", "medium"] },
 		{ "start": 40, "end": 60, "type": "wave", "spawn_rate": Vector2(0.2, 1.2), "enemies": ["medium"] },
@@ -220,6 +221,7 @@ func _spawn_enemy():
 	var spawn_y = game.spawn_y
 	if enemy_type == "big":
 		spawn_y = game.spawn_y - 5
+		spawn_distance = spawn_distance + 100
 		
 	var screen_width = game.get_viewport_rect().size.x
 
@@ -299,6 +301,7 @@ func _on_enemy_died():
 			#target.take_damage(1)
 			
 func trigger_special_attack(center_position: Vector2):
+	special_hint_sound.play()
 	var enemies_with_distance := []
 
 	for enemy in active_enemies:
