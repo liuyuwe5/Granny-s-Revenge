@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cba5jfmkawkg3"]
+[gd_scene load_steps=9 format=3 uid="uid://cba5jfmkawkg3"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_3gi5b"]
 [ext_resource type="Texture2D" uid="uid://bcv81jcv2nejv" path="res://Assets/Sprites/Environment/background_sprite_1.png" id="1_pebdd"]
 [ext_resource type="Texture2D" uid="uid://qrvs5py7gxe8" path="res://Assets/temple_images/ChatGPT_granny.png" id="2_ofjfe"]
-[ext_resource type="FontFile" uid="uid://d3jfoylenjxrd" path="res://Assets/font/04B_30__.TTF" id="3_ivgok"]
+[ext_resource type="Texture2D" uid="uid://b5j8jr82l8v2a" path="res://Assets/Sprites/Environment/初始界面.png" id="4_b4fsh"]
+[ext_resource type="FontFile" uid="uid://brkwwwbqh7f18" path="res://Assets/font/Uranus_Pixel_11Px.ttf" id="5_50m87"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ytgu"]
 texture = ExtResource("1_pebdd")
@@ -45,6 +46,13 @@ offset_right = 1054.0
 offset_bottom = 447.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_p3jo4")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+scale = Vector2(1.00128, 1.00329)
+texture = ExtResource("4_b4fsh")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -52,51 +60,60 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -145.5
-offset_top = -94.0
-offset_right = 145.5
-offset_bottom = 94.0
+offset_left = -144.0
+offset_top = -20.0
+offset_right = 147.0
+offset_bottom = 168.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.00225, 1)
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.212305, 0.212305, 0.212305, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.3, 0.3, 0.3, 1)
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_ttgm6")
 text = "Start Game"
+flat = true
 
 [node name="Button3" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.212305, 0.212305, 0.212305, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.301961, 0.301961, 0.301961, 1)
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_ttgm6")
 text = "Options
 "
+flat = true
 
 [node name="Button2" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.212305, 0.212305, 0.212305, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.301961, 0.301961, 0.301961, 1)
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_ttgm6")
 text = "Exit"
+flat = true
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -343.0
-offset_top = 122.0
-offset_right = 359.0
-offset_bottom = 212.0
+offset_left = -344.0
+offset_top = 184.0
+offset_right = 358.0
+offset_bottom = 274.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("3_ivgok")
-theme_override_font_sizes/font_size = 54
-text = "Granny's Revenge"
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
+theme_override_fonts/font = ExtResource("5_50m87")
+theme_override_font_sizes/font_size = 70
+text = "Mei 68"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_options_pressed"]

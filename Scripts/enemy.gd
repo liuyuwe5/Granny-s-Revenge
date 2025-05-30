@@ -5,6 +5,9 @@ extends Area2D
 var direction := -1
 var is_dead := false
 var enemy_type := "small"
+var is_updated := false
+
+
 
 func configure(_speed: float, _health: int, _direction: int, _type: String):
 	speed = _speed
@@ -12,29 +15,38 @@ func configure(_speed: float, _health: int, _direction: int, _type: String):
 	direction = _direction
 	enemy_type = _type
 
+	
+
+func _ready():
+	pass
+
 func update_size_by_type():
-	if enemy_type == "big":
-		$AnimatedSprite2D.scale = Vector2(direction * 0.5, 0.5)
+	if enemy_type == "big" and not is_updated:
+		#$AnimatedSprite2D.scale = Vector2(direction * 0.5, 0.5)
+		scale = Vector2(2.0 * direction, 2.0)
 		$CollisionShape2D.shape = $CollisionShape2D.shape.duplicate()
 		var shape = $CollisionShape2D.shape as CapsuleShape2D
-		shape.radius = 40
-		shape.height = 90
+		shape.radius = 100
+		shape.height = 200
+		is_updated = true
 
 
 func _process(delta):
+	
 	if is_dead:
 		return
-
+	
 	position.x += direction * speed * delta
 	
 	var anim_name = get_walk_animation(enemy_type)
+	update_size_by_type()
 	$AnimatedSprite2D.play(anim_name)
+	
 
 	# 控制左右翻转
-	
-	$AnimatedSprite2D.scale = Vector2(direction, 1.0)
-	if enemy_type == "big":
-		update_size_by_type()
+	if enemy_type != "big":
+		$AnimatedSprite2D.scale = Vector2(direction, 1.0)
+
 
 func get_walk_animation(enemy_type: String) -> String:
 	match enemy_type:
@@ -60,6 +72,7 @@ func take_damage(amount: int = 1):
 
 func die():
 	is_dead = true
+	
 	$AnimatedSprite2D.play(get_death_animation(enemy_type))
 	print("death:" + enemy_type)
 
