@@ -100,13 +100,16 @@ func update_hearts_ui():
 		else:
 			heart.texture = empty_heart_texture
 
-
+#
 func game_over():
 	if not is_game_over:
 		is_game_over = true
 		animator.play("death")
 		await get_tree().create_timer(3).timeout
+		print("change_scene")
 		get_tree().change_scene_to_file("res://Scenes/GameOver.tscn")
+		print("✅ done")
+
 		
 		
 func win():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://sal85tv54jhi"]
+[gd_scene load_steps=24 format=3 uid="uid://sal85tv54jhi"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_c0ajo"]
 [ext_resource type="PackedScene" uid="uid://gl1iys3k3ywe" path="res://Scenes/Enemy.tscn" id="2_jbi6h"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://c6eci4bs3m0nh" path="res://Assets/Sprites/UI/horizontal bars/medium rounded/progress bar medium rounded over.png" id="14_pnl1g"]
 [ext_resource type="Texture2D" uid="uid://cilb78t340xy3" path="res://Assets/Sprites/UI/arrow_isometric.png" id="14_yx2yj"]
 [ext_resource type="Texture2D" uid="uid://cupmekw7ssoix" path="res://Assets/Sprites/UI/horizontal bars/medium rounded/progress bar medium rounded progress green.png" id="15_515v8"]
+[ext_resource type="FontFile" uid="uid://brkwwwbqh7f18" path="res://Assets/font/Uranus_Pixel_11Px.ttf" id="16_6ce16"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_arhbn"]
 distance = 6.59044
@@ -198,6 +199,16 @@ max_value = 10.0
 nine_patch_stretch = true
 texture_under = ExtResource("14_pnl1g")
 texture_progress = ExtResource("15_515v8")
+
+[node name="SpecialHint" type="Label" parent="CanvasLayer"]
+offset_left = 176.0
+offset_top = 280.0
+offset_right = 973.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("16_6ce16")
+theme_override_font_sizes/font_size = 40
+text = "Press [Space] to launch a special tomato attack!"
 
 [node name="ArrowHint" type="AnimatedSprite2D" parent="."]
 visible = false

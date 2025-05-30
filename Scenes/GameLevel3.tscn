@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://csypjl6kon27t"]
+[gd_scene load_steps=25 format=3 uid="uid://csypjl6kon27t"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_ucnw2"]
 [ext_resource type="PackedScene" uid="uid://gl1iys3k3ywe" path="res://Scenes/Enemy.tscn" id="2_pl3vl"]
@@ -7,13 +7,17 @@
 [ext_resource type="Texture2D" uid="uid://618vgyurxgip" path="res://Assets/Sprites/Environment/摩登城市.png" id="5_nh4dk"]
 [ext_resource type="Texture2D" uid="uid://d25g6nj4x4vnp" path="res://Assets/Sprites/Environment/modern_city_ground.png" id="6_6uikf"]
 [ext_resource type="PackedScene" uid="uid://bcmfox80hwm8a" path="res://Scenes/Player.tscn" id="7_v5coy"]
+[ext_resource type="Texture2D" uid="uid://cfo1a0k5akagy" path="res://Assets/Sprites/ui_heart.png" id="8_0if5a"]
+[ext_resource type="Texture2D" uid="uid://bd3aotexpqwrp" path="res://Assets/Sprites/ui_heart_blank.png" id="9_sho4p"]
 [ext_resource type="FontFile" uid="uid://brkwwwbqh7f18" path="res://Assets/font/Uranus_Pixel_11Px.ttf" id="10_im2i3"]
-[ext_resource type="Texture2D" uid="uid://c6eci4bs3m0nh" path="res://Assets/Sprites/UI/horizontal bars/medium rounded/progress bar medium rounded over.png" id="12_15i1q"]
+[ext_resource type="Texture2D" uid="uid://bm4vh2h3wcw8k" path="res://Assets/Sprites/ui_bar.png" id="10_mb8vq"]
+[ext_resource type="Texture2D" uid="uid://dfur0v32xrilf" path="res://Assets/Sprites/ui_bar_inside.png" id="11_hymix"]
 [ext_resource type="Shader" path="res://Shaders/Arrow.gdshader" id="12_rcawx"]
-[ext_resource type="Texture2D" uid="uid://cupmekw7ssoix" path="res://Assets/Sprites/UI/horizontal bars/medium rounded/progress bar medium rounded progress green.png" id="13_1761f"]
+[ext_resource type="Texture2D" uid="uid://b5tqrp558k6yw" path="res://Assets/Sprites/ui_bar_shadow.png" id="13_1f7fr"]
 [ext_resource type="Texture2D" uid="uid://cilb78t340xy3" path="res://Assets/Sprites/UI/arrow_isometric.png" id="13_a8gbo"]
 [ext_resource type="AudioStream" uid="uid://ckl71uq7oofyv" path="res://Assets/Audio/都市战斗.mp3" id="14_dvhyq"]
 [ext_resource type="Script" path="res://Scripts/level_management.gd" id="14_noc82"]
+[ext_resource type="Texture2D" uid="uid://dela8ukensg4r" path="res://Assets/Sprites/ui_heart_shadow.png" id="14_pxy2e"]
 [ext_resource type="AudioStream" uid="uid://du4nyn6iw3co1" path="res://Assets/Audio/获得buff.mp3" id="15_8u0fc"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_arhbn"]
@@ -90,6 +94,8 @@ texture = ExtResource("6_6uikf")
 [node name="Player" parent="." instance=ExtResource("7_v5coy")]
 position = Vector2(0, 24)
 scale = Vector2(4, 4)
+full_heart_texture = ExtResource("8_0if5a")
+empty_heart_texture = ExtResource("9_sho4p")
 
 [node name="Boundary" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -128,8 +134,11 @@ autostart = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HeartContainer" type="HBoxContainer" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 40.0
+offset_top = 24.0
+offset_right = 80.0
+offset_bottom = 64.0
+scale = Vector2(2.58316, 0.85578)
 
 [node name="Heart1" type="TextureRect" parent="CanvasLayer/HeartContainer"]
 layout_mode = 2
@@ -155,14 +164,14 @@ offset_bottom = 23.0
 metadata/_edit_use_anchors_ = true
 
 [node name="ProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
-offset_left = 432.0
+offset_left = 400.0
 offset_top = 24.0
-offset_right = 472.0
+offset_right = 440.0
 offset_bottom = 64.0
 scale = Vector2(8.91409, 0.955203)
 nine_patch_stretch = true
-texture_under = ExtResource("12_15i1q")
-texture_progress = ExtResource("13_1761f")
+texture_under = ExtResource("10_mb8vq")
+texture_progress = ExtResource("11_hymix")
 
 [node name="SpecialHint" type="Label" parent="CanvasLayer"]
 offset_left = 176.0
@@ -173,6 +182,22 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("10_im2i3")
 theme_override_font_sizes/font_size = 40
 text = "Press [Space] to launch a special tomato attack!"
+
+[node name="ProgressShadow" type="TextureRect" parent="CanvasLayer"]
+offset_left = 384.0
+offset_top = 16.0
+offset_right = 543.0
+offset_bottom = 56.0
+scale = Vector2(2.4695, 1.3791)
+texture = ExtResource("13_1f7fr")
+
+[node name="HeartShadow" type="TextureRect" parent="CanvasLayer"]
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 84.0
+offset_bottom = 56.0
+scale = Vector2(2.92175, 1.39071)
+texture = ExtResource("14_pxy2e")
 
 [node name="ArrowHint" type="AnimatedSprite2D" parent="."]
 visible = false

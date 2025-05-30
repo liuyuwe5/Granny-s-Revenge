@@ -239,12 +239,16 @@ func _spawn_enemy():
 
 
 func _start_progress_bar():
+	
 	var bar = get_tree().current_scene.get_node("CanvasLayer/ProgressBar")
 	if not bar:
 		print("⚠️ Progress bar not found")
 		return
+		
+	var player = game.get_node("Player")
 
-	while timeline_elapsed_time < timeline_total_time:
+	while timeline_elapsed_time < timeline_total_time and not player.is_game_over:
+		
 		await get_tree().process_frame
 		timeline_elapsed_time += get_process_delta_time()
 
